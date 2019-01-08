@@ -1,0 +1,7 @@
+db.sqlite3
+__pycache__/
+*.py[cod]
+migrations/
+src/thagomizer/static/CSV_Output/
+src/thagomizer/static/Output/
+src/thagomizer/static/graphy_static/

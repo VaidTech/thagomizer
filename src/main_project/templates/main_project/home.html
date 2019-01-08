@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_extra_html_css %}
+<!-- nothing here -->
+{% endblock %}
+
+{% block content %}
+ <section class="side-row">
+    <div class="side-menu-dev">
+        <ul class="side-menu-ul">
+            <li class="side-menu-circle active-side-menu"><a href="#video-section" class="side-scroll-class"><i class="fas fa-circle"></i></a></li>
+            <li class="side-menu-circle"><a href="#part-two-section" class="side-scroll-class"><i class="fas fa-circle side-menu-circle"></i></a></li>
+            <li class="side-menu-circle"><a href="#part-three-section" class="side-scroll-class"><i class="fas fa-circle side-menu-circle"></i></a></li>
+            <!--<li class="side-menu-circle"><a href="#footer-section" class="side-scroll-class"><i class="fas fa-circle side-menu-circle"></i></a></li>-->
+        </ul>
+    </div>
+  </section>
+
+ <!--          Video section start     -->
+  <section id="video-section">
+     <div>
+        <video  muted loop id="myVideo">
+          <source src="{%  static 'main_design/video/video.mp4' %}" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>  
+
+      <div class="content">
+        <i class="far fa-play-circle icon-play" id="myBtn"></i>
+      </div>
+  </section>
+  <!--          Video section end       -->
+
+  <!--          section two start     -->
+  <section id="part-two-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+              <div class="part-two-title-box">
+                <p class="part-two-title">Global CLiPP-Seq</p>
+                <p class="part-two-subtitle">A Biochemical Technique for detecting RNA Binding Protein Occupancy Transcriptome-Wide</p>
+              </div>
+              <div class="col-sm-2"></div>  
+              <div class="col-sm-10">
+                <div class="col-sm-3">
+                    <img src="{%  static 'main_design/img/1.png' %}" class="part-two-img1">              
+                </div>
+                <div class="col-sm-3">
+                    <img src="{%  static 'main_design/img/2.png' %}" class="part-two-img2">
+                </div>
+                <div class="col-sm-3">
+                    <img src="{%  static 'main_design/img/3.png' %}" class="part-two-img3">
+                </div>
+                <div class="col-sm-3">
+                    <img src="{%  static 'main_design/img/4.png' %}" class="part-two-img4">
+                </div>
+                <div class="col-sm-6">
+                    <img src="{%  static 'main_design/img/5.png' %}" class="part-two-img5">
+                </div>
+                <div class="col-sm-6">
+                    <p class="part-two-des">To identify RNA cis-regulatory elements in an unbiased manner, <span class="color-blue">Ansel Lab</span> {Link: https://ansel.ucsf.edu} has developed GCLiPP. Using GCLiPP, we identified RBP binding sites in mRNAs of human Jurkat T cells and mouse primary T cells. GCLiPP sequence tags correspond to known RBP binding sites, specifically correlating to abundant cytosolic RBPs. Thagomizer was designed to host these datasets in a format easily accessible to the research community.</p>
+                </div>
+              </div>  
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--          section two end     -->
+  
+  <!--          section three start     -->
+  <section id="part-three-section">
+     <div class="container">
+        <div class="row">
+           <div class="three-part-text">
+            <p class="part-three-title">A Brife Prime on</p>
+            <p class="part-three-subtitle">HITS-CLiP</p>
+            <p class="part-three-text1">High-Throughput Sequencing of RNA</p>
+            <p class="part-three-text2">Isolated by Crosslinking Immunoprecipitation</p>
+           </div>  
+            <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-3">
+                       <img src="{%  static 'main_design/img/111.png' %}" class="part-two-img1">   
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="{%  static 'main_design/img/222.png' %}" class="part-two-img44">   
+                    </div>
+                    <div class="col-sm-5">
+                        <p class="part-three-des"><a class="color-blue" href="https://www.nature.com/articles/nature07488">Licatalosi et al., 2008</a> presents HITS-
+                            CLiPP as a powerful biochemical technique to interrogate the binding activity of specific RNA
+                            Binding Proteins. HITS-CLiPP generates a transcriptome-wide map of Protein-RNA binding sites,
+                            thus allowing for the elucidation of cis-regulatory elements.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 part-three-row-two">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-3">
+                       <img src="{%  static 'main_design/img/333.png' %}" class="part-two-img11">   
+                    </div>
+                    <div class="col-sm-3">
+                      <img src="{%  static 'main_design/img/444.png' %}" class="part-two-img22">   
+                    </div>
+                    <div class="col-sm-5">
+                       <img src="{%  static 'main_design/img/55.png' %}" class="part-two-img33">   
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+  </section>
+  <!--          section three end     -->
+ 
+
+{% endblock %}
+
+{% block footer_extra_html_css %}
+  <script>
+        $(document).ready(function(){
+          $('.home_menu').addClass('active-page')
+        })
+   </script>
+  <script src="{%  static 'main_design/js/baguetteBox.js' %}"></script>
+  <script>
+    baguetteBox.run('.tz-gallery');
+  </script>
+
+{% endblock %}

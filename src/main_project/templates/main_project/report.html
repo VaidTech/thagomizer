@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_extra_html_css %}
+<!-- nothing here -->
+{% endblock %}
+
+{% block content %}
+
+    <section id="our-team">
+       <div class="container">
+          <div class="row">
+              <div class="col-sm-12" id="text-area">
+                  <p class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".5s">Report Bugs</p>
+                  <h6 class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".7s">Contact us If you find any bug</h6>
+                  <hr class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".9s" id="team-line">
+              </div>
+          </div>
+       </div>
+    </section>
+   <div id="overlay">
+        <div class="spinner"></div> 
+   </div>
+  <form method="POST">
+  {% csrf_token %}
+    <section id="services-section">
+      <div class="container" id="services-width">
+         <div class="row wow fadeIn" data-wow-duration="5.1s" data-wow-delay="1s">
+           <div id="services-text">
+               <p id="services-title" class="wow fadeIn img-responsive" data-wow-duration="1.1s" data-wow-delay=".5s">Send Us a Message</p>
+               <p id="services-des" class="wow fadeIn img-responsive" data-wow-duration="1.1s" data-wow-delay=".5s">Get in Touch</p>
+           </div>
+            <div class="col-sm-12 wow fadeIn img-responsive" data-wow-duration="1.1s" data-wow-delay=".5s">
+              <div class="col-sm-2">
+              </div>
+              <div class="col-sm-8">
+                 <div class="col-sm-6" id="input-name-box">
+                    <input type="text" name="name" placeholder="Your name" id="userName" required>
+                 </div>
+                 <div class="col-sm-6" id="input-name-box">
+                    <input type="Email" name="email" placeholder="Your E-mail" id="emailName" required>
+                 </div>
+                 <div class="col-sm-12" id="input-name-message">
+                    <textarea rows="4" cols="50" name="message" placeholder="Your message" id="" required></textarea>
+                    <div id="send-message-div">
+                      <button class="btn" style="background-color:#2e2d33"><p style="color:white">Send Message</p></button>
+                    </div>  
+                 </div>
+              </div> 
+              <div class="col-sm-2">
+              </div>  
+            </div>
+         </div>
+      </div>
+    </section><!--             conatct section            --> 
+  </form>
+
+{% endblock %}
+
+{% block footer_extra_html_css %}
+  <script>
+        $(document).ready(function(){
+          $('.report_menu').addClass('active-page')
+        })
+   </script>
+    <script type="text/javascript">
+    //     $('#send-message-button').click(function(e){
+
+    //     var name = $('#userName').val();
+    //     var mess = $('#textArea').val();
+
+    //     var email = $('#emailName').val();
+
+    //      if(email != ""){
+
+    //          var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    //         if( !emailReg.test( email )) {
+    //             alert('Please enter valid email');
+    //             location.reload();
+    //             } else {
+                
+    //             }
+
+    //      }
+              
+  
+
+    //     var item = {
+    //       subject : name,
+    //       email   : email,
+    //       details : mess,
+    //     }
+
+
+    //     if(name != "" && email != "" && mess != "")
+    //      {
+
+    //       $('.spinner').css('display','block');
+    //       $('#overlay').css('z-index','1000');
+
+    //       setTimeout(function() {
+    //          $('#overlay').css('z-index','00');
+    //          $('#overlay').css('display','none');
+    //       },1500);
+
+    //       (function(e){
+    //              $('.spinner').css('display','none');
+    //              console.log('success');
+
+    //               swal("", "Your Message Send", "success");
+
+    //              var delay = 1400;
+    //              setTimeout(function() {
+    //                  var zz = document.querySelector('.swal-overlay').style.display = 'none';
+    //                  location.reload()
+    //              }, delay);
+
+                 
+
+    //           })()
+           
+    //         console.log(name);
+    //         console.log(email);
+    //         console.log(mess);
+
+    //       }else{
+    //          $('.spinner').css('display','block');
+    //       $('#overlay').css('z-index','1000');
+
+    //       setTimeout(function() {
+    //          $('#overlay').css('z-index','00');
+    //          $('#overlay').css('display','none');
+    //       },1500);
+
+    //       (function(e){
+    //              $('.spinner').css('display','none');
+    //              console.log('success');
+
+    //               swal("", "Fill up the from", "warning");
+
+    //              var delay = 1400;
+    //              setTimeout(function() {
+    //                  var zz = document.querySelector('.swal-overlay').style.display = 'none';
+    //                  location.reload()
+    //              }, delay);
+
+                 
+                  
+    //           })()
+    //       }
+
+    // });
+     </script>
+{% endblock %}

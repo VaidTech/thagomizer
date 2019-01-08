@@ -1,0 +1,619 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_extra_html_css %}
+  <style type="text/css">
+    @media screen and (max-width: 600px) {
+      .col-sm-12 {
+        padding: 0px;
+     }
+   }
+   </style>
+{% endblock %}
+
+{% block content %}
+    
+    </style>
+
+    <section id="top-sub-section">
+    </section><!--       Wallpaper Section     -->
+
+    <section id="dashboard-section">
+      <div class="container-fluid">
+        <div class="row">
+           <div class="col-sm-12 wow fadeIn" data-wow-duration="2.1s" data-wow-delay="1s">
+              <div class="col-sm-3">
+                <div class="col-sm-12"  id="mobile-padding">
+                   <div id="main-box-body">
+                      <div id="table-button-box">
+                        <div class="col-xs-9" id="table-row-width">
+                           <p id="table-button-title">Pick a region of <br/> the Genome </p>
+                        </div>
+                        <div class="col-xs-3" id="table-row-width">
+                           <!-- <p id="table-button-icons">dsds</p> -->
+                          <div class="auto_complete">
+                                <p style="color:red" class="no_matching_query_error_msg">
+                                  <!-- error msg given here, if no query result found (coming from main.js) -->
+                                </p>
+                                <p style="color:green" class="matching_query_success_msg">
+                                  <!-- error msg given here, if no query result found (coming from main.js) -->
+                                </p>
+                            </div>
+                        </div>
+                      </div>  
+                      <div id="table-seach-box">
+                         <p id="table-seach-text">Search by Entrez GeneID:</p>
+                         <input id="table-seach-input" type="string" name="" class="geneid geneid_search" value="Actb">
+                      </div><!-- search box -->
+                      <div id="table-seach-box">
+                         <p id="table-seach-text">Search by Location:</p>
+                         <input id="table-seach-input" type="" name="" class="location" value="chr5:142903115-142906754">
+                      </div><!-- search box -->
+                      <div id="table-seach-box">
+                         <p id="table-seach-text">Search by RefSeqID:</p>
+                         <input id="table-seach-input" type="" name="" class="refseqID" value="NM_007393">
+                      </div><!-- search box -->
+                   </div>
+                </div><!-- col-sm-12 -->
+
+                <div class="col-sm-12" id="gclipp-table">
+                   <div id="gclipp-box-body">
+                      <div id="table-button-box">
+                        <div class="col-xs-12" id="table-row-width">
+                           <p id="table-button-title1">Pick a GCLIPP File</p>
+                        </div>
+                      </div><!-- op-text box -->  
+
+                      <div id="add-here">
+                          <div class="col-sm-12" id="gclipp-seach-box">
+                            <div class="col-xs-9" id="gclipp-option-box">
+                                <select id="gclipp-option-bar" class="selection" data-index="0">
+                                  <!-- <option value="GCliPP_cd8_merged.bam" >GCliPP_cd8_merged.bam</option> -->
+                                  <!-- <option value="GRAPHY_TEST%2FmiR29_WT_Th17.bam" >GRAPHY_TEST%2FmiR29_WT_Th17.bam</option> -->
+                                </select>
+                            </div>
+                            <div class="col-xs-3" id="gclipp-side-box">
+                                <p id="gclipp-seach-text">Antisense</p>
+                                <input type="checkbox" data-index="0" name="" class="checkbox">
+                            </div>
+                          </div><!-- search box  Number one -->
+                        
+                      </div>
+                      <div class="col-sm-12" id="button-box">
+                         <span id="add-button">+</span>
+                         <span id="delete-button">-</span>
+                      </div>
+                   </div>
+                </div><!-- col-sm-12 -->  
+              </div><!-- col-sm-3 --> 
+
+              <div class="col-sm-6" id="big-table-row">
+                <div class="col-sm-4" id="graph-table">
+                      <div class="col-xs-12" id="graph-row-box">
+                         <div class="col-xs-9" id="graph-table-text">
+                            <p>Graph 1</p>
+                         </div>
+                         <div class="col-xs-3">
+                            <input data-index="0" class="jscolor" value="#ea3a3a" type="button" />
+                            <!-- <input type="color" data-index="0" class="jscolor" value="#ea3a3a"/> -->
+                         </div>
+                      </div><!--    col-sm-12      -->
+                      <div id="add-here-two">
+                      </div>
+                </div><!-- col-sm-4 -->
+                <div class="col-sm-4" id="graph-table">
+                     <div class="col-sm-12" id="axis-table">
+                       <div id="axis-div-boxes">
+                            <p id="x-axis-text">x axis(inches)</p>
+                            <div class="col-xs-4 axis-add-button-one" id="axis-number-add">
+                                <span >+</span>
+                            </div>
+                            <div class="col-xs-4" id="axis-number-input">
+                                <span><input type="" name="" value="35" id="axis-input-one"></span>
+                            </div>
+                            <div class="col-xs-4 axis-sub-button-one" id="axis-number-sub">
+                                <span>-</span>
+                            </div>
+                      </div> 
+                      <div id="axis-div-boxes">
+                            <p id="x-axis-text">Font Size</p>
+                            <div class="col-xs-4 axis-add-button-two" id="axis-number-add">
+                                <span>+</span>
+                            </div>
+                            <div class="col-xs-4" id="axis-number-input">
+                                <span><input type="" name="" value="20" id="axis-input-two"></span>
+                            </div>
+                            <div class="col-xs-4 axis-sub-button-two" id="axis-number-sub">
+                                <span>-</span>
+                            </div>
+                      </div>     
+                     </div>
+                </div><!-- col-sm-4 -->
+                <div class="col-sm-4" id="graph-table">
+                    <div class="col-sm-12" id="genome-table">
+                        <p id="x-axis-text">Genome</p>
+                        <div class="col-xs-6" id="genome-side-box">
+                           <input type="checkbox" name="vehicle" value="" id="genome-check-box1">
+                           <img src="{% static 'main_design/img/mouse.png' %}" id="" style="width: 100%;">
+                           <p id="genome-img-text">mm10</p>
+                        </div>
+                        <div class="col-xs-6" id="genome-side-box">
+                           <input type="checkbox" name="vehicle" value="" id="genome-check-box2">
+                           <img src="{% static 'main_design/img/man.png' %}" id="" style="width: 100%;">
+                           <p id="genome-img-text">hg38</p>
+                        </div>
+                    </div>
+
+                </div><!-- col-sm-4 -->
+                <div class="col-sm-12" id="big-boxes">
+                   <a class="example-image-link" href="" data-lightbox="example-1"/>                 
+                  <img class="example-image graph_result_img " src="" alt=""/>
+                  
+                  </a>
+                  <div id="show_img">
+                       <p class="full_img_text" alt="image-1">Click For Full Image</p>
+                  </div>
+                  <!-- <img class="graph_result_img" src="{% static 'main_design/img/error.png' %}"/>   -->
+                  <img class="graph_result_gif" src="https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif"/> 
+                   
+                </div><!-- col-sm-12 --> 
+                <div class="col-sm-12" id="big-boxes">
+                   <div id="chartdiv" style="background-color: white;"></div>
+                </div><!-- col-sm-12 --> 
+
+              </div><!-- col-sm-6 --> 
+
+              <div class="col-sm-3">
+                <div class="col-sm-12 sequence-analysis" id="mobile-padding">
+                  <div id="">
+                     <p id="sequence-analysis-text">Sequence Analysis</p>
+                     <div class="col-sm-12" id="peak-search-box">
+                        <div class="col-xs-2">
+                            <input type="checkbox" name="vehicle" value="" id="sequence-analysis-check-box1">
+                        </div>
+                        <div class="col-xs-8">
+                             <p>Homer</p>
+                        </div>
+                        
+                        
+                        
+                        
+                        <img src="{% static 'main_design/img/homer.png' %}" style="margin-left: 10%;width: 70%;">
+                            
+                            
+                     </div>
+                     <div class="col-sm-12" id="peak-search-box2">
+                        <div class="col-xs-2">
+                            <input type="checkbox" name="vehicle" value="" id="sequence-analysis-check-box2">
+                        </div>
+                        <div class="col-xs-10">
+                             <!-- <p>miRNA Target Search</p> -->
+                             <img src="{% static 'main_design/img/button_logo.png' %}" style="margin-left: -16%;width: 100%;">
+                             
+                        </div>
+                        <select id="sequence-analysis-option-bar">
+                              <option value="Targetscan">All</option>
+                          {% for i in options_list %}
+                              <option value="{{ i }}">{{ i }}</option>
+                          {% endfor %}
+                        </select>
+                     </div>
+                  </div>
+                </div><!-- col-sm-12 -->
+                <div class="col-sm-12 special-formate" id="mobile-padding">
+                   <div id="">
+                        <p id="special-formate-text">Special Formatting</p>
+                        <div class="col-xs-12" id="special-formate-single-box">
+                            <div class="col-xs-2" id="no-padding">
+                                 <input type="checkbox" name="vehicle" value="" class="staticaxes" id="special-formate-check-box" checked >
+                            </div>
+                            <div class="col-xs-10" id="no-padding">
+                                 <!-- <p id="special-formate-single-text">Reference Sequence Labels</p> -->
+                                 <p id="special-formate-single-text">staticaxes</p>
+                            </div>
+                        </div><!-- col-sm-12 -->
+                        <div class="col-xs-12" id="special-formate-single-box">
+                            <div class="col-xs-2" id="no-padding">
+                                 <input type="checkbox" name="vehicle" value="" class="LeftToRight" id="special-formate-check-box" >
+                            </div>
+                            <div class="col-xs-10" id="no-padding">
+                                 <!-- <p id="special-formate-single-text">Shade plot by Labels</p> -->
+                                 <p id="special-formate-single-text">LeftToRight</p>
+                            </div>
+                        </div><!-- col-sm-12 -->
+                        <div class="col-xs-12" id="special-formate-single-box">
+                            <div class="col-xs-2" id="no-padding">
+                                 <input type="checkbox" name="vehicle" value="" class="axis_off" id="special-formate-check-box" >
+                            </div>
+                            <div class="col-xs-10" id="no-padding">
+                                 <!-- <p id="special-formate-single-text">Unlabeled Button1</p> -->
+                                 <p id="special-formate-single-text">axis_off</p>
+                            </div>
+                        </div><!-- col-sm-12 -->
+                        <div class="col-xs-12" id="special-formate-single-box">
+                            <div class="col-xs-2" id="no-padding">
+                                 <input type="checkbox" name="vehicle" value="" class="refseqtrack" id="special-formate-check-box" checked >
+                            </div>
+                            <div class="col-xs-10" id="no-padding">
+                                 <!-- <p id="special-formate-single-text">Unlabeled Button2</p> -->
+                                 <p id="special-formate-single-text">refseqtrack</p>
+                            </div>
+                        </div><!-- col-sm-12 -->
+                   </div>
+                </div><!-- col-sm-12 -->
+                <div class="col-sm-12" id="search-button-box">
+                  <p id="search-main-button">Plot</p>
+                </div><!-- col-sm-12 -->
+              </div><!-- col-sm-3 --> 
+              <div class="col-sm-12" id="small-boxes">
+
+                  <a class="example-image-link" href="" data-lightbox="example-1"/>                 
+                    <img class="example-image graph_result_img " src="" alt=""/>
+                  </a>
+                  <div id="show_img">
+                     <p class="full_img_text" alt="image-1">Click For Full Image</p>
+                  </div>
+                  <img style="width:72px" class="graph_result_gif" src="https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif"/> 
+                   
+
+                  <!-- <a class="example-image-link" href="{% static 'main_design/img/wall-back.png' %}" data-lightbox="example-1"/>                 
+                  <img class="example-image graph_result_img" src="{% static 'main_design/img/wall-back.png' %}" alt="image-1"/>
+                  </a>
+                  <div id="show_img">
+                       <p class="full_img_text" alt="image-1">Click For Full Image</p>
+                  </div> -->
+                  <!-- <img class="graph_result_img" src="{% static 'main_design/img/error.png' %}"/>   -->
+                  <!-- <img class="graph_result_gif" src="https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif"/> -->
+              </div><!-- col-sm-12 --> 
+           </div>
+        </div>
+      </div>
+    </section><!--       Dashboard Section     -->
+
+<input type="hidden" class="data_file_mm10" name="data_file_mm10" value="{{ data_file_mm10 }}">
+<input type="hidden" class="data_file_hg19" name="data_file_hg19" value="{{ data_file_hg19 }}">
+
+{% endblock %}
+
+{% block footer_extra_html_css %}
+  
+    <script src="{% static 'main_design/js/jscolor.js' %}"></script>
+    <content>
+    
+    </content>
+
+    <script type="text/javascript">
+  
+    
+
+    $(document).ready(function(){
+
+      $('.graphing_dashboard_menu').addClass('active-page')
+      //to add the extra li(can't write on base.html because this li is only for this file)
+      code_web = '<li id="menu-list-name"><a href="https://github.com/sskhon-2014/Graphy">Source Code</a></li>'
+      code_mobile = '<a href="https://github.com/sskhon-2014/Graphy"><li id="mobile-menu-list-name" class="home_menu">Source Code</li></a>'
+      $('#menu-list li:nth-child(2)').after(code_web);
+      $('#mobile-menu-list a:nth-child(2)').after(code_mobile);
+
+      
+      $('.graph_result_img').hide()
+      $('.graph_result_gif').hide()
+       $('#search-button-box').on('click', function(){
+          // console.log(value_object)
+          get_graph()   //to remove current graph if have any
+          $('.graph_result_img').hide()
+          $('.graph_result_gif').attr("src", 'https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif')
+          $('.graph_result_gif').show()
+          $.ajax({
+            method:'GET',
+            url:'/graphy',
+            data:value_object,
+            success:function(data){
+              // console.log(data.graph_data)
+
+              bam_files = data.bam_files
+              graph_data = data.graph_data
+              data = data.image_url
+              
+              if (data == "error"){
+                $('.graph_result_img').attr("src", 'https://i.ytimg.com/vi/pAZ7z7OJOsc/hqdefault.jpg')
+                $('.graph_result_img').show()
+                $('.graph_result_gif').hide()
+              }else{
+
+                get_graph(graph_data, bam_files)
+
+
+  	             $('.graph_result_img').attr("src", '')  //cause sometime img's new src sit on it place later but show before, so for 1/2 sec it shows the previous image so we are hiding previous img. (Only if server is slow)
+                  $('.graph_result_img').attr("src", 'https://i.ytimg.com/vi/pAZ7z7OJOsc/hqdefault.jpg')
+                  $.when( $('.graph_result_img').attr("src", data) ).done(function(){
+
+                      $.when( $('.example-image-link').attr("href", data) ).done(function(){
+                          $('.graph_result_img').show()
+                          $('.example-image-link').show()
+                          $('.graph_result_gif').hide()
+                      })
+                  })  
+                
+            }
+            
+          },
+          error:function(error){
+            console.log('error', error)
+            $('.graph_result_img').attr("src", 'https://i.ytimg.com/vi/pAZ7z7OJOsc/hqdefault.jpg')
+            $('.graph_result_img').show()
+            $('.graph_result_gif').hide()
+          }
+        })
+
+     })
+
+
+
+
+
+
+
+
+
+var get_graph = function(data, bam_files){
+    // console.log(val)
+        
+    am4core.useTheme(am4themes_material);
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+
+
+    var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+    // chart.data = [{
+    //   "year": "1994",
+    //   "cars": 1587,
+    //   "motorcycles": 650,
+    //   "bicycles": 121
+    // }, {
+    //   "year": "1995",
+    //   "cars": 1567,
+    //   "motorcycles": 683,
+    //   "bicycles": 146
+    // }, {
+    //   "year": "2007",
+    //   "cars": 1110,
+    //   "motorcycles": 210,
+    //   "bicycles": 81
+    // }, {
+    //   "year": "2008",
+    //   "cars": 1165,
+    //   "motorcycles": 232,
+    //   "bicycles": 75
+    // }, {
+    //   "year": "2009",
+    //   "cars": 1145,
+    //   "motorcycles": 219,
+    //   "bicycles": 88
+    // }, {
+    //   "year": "2010",
+    //   "cars": 1163,
+    //   "motorcycles": 201,
+    //   "bicycles": 82
+    // }, {
+    //   "year": "2011",
+    //   "cars": 1180,
+    //   "motorcycles": 285,
+    //   "bicycles": 87
+    // }, {
+    //   "year": "2012",
+    //   "cars": 1159,
+    //   "motorcycles": 277,
+    //   "bicycles": 71
+    // }];
+
+    chart.data = data
+    // console.log(data)
+
+
+    // chart.data = [{'x_axis': "1111", 'GCliPP_cd8_merged.bam': 4}, {'x_axis': "2222", 'GCliPP_cd8_merged.bam': 5}, {'x_axis': "3333", 'GCliPP_cd8_merged.bam': 6}]
+
+    // chart.data = [{"GCliPP_everything.bam": 1, 'year': "1", "miR29_WT_Th17.bam": 3}, {"GCliPP_everything.bam": 4, 'year': "123", "miR29_WT_Th17.bam": 5}, {"GCliPP_everything.bam": 1, 'year': "20", "miR29_WT_Th17.bam": 8}]
+
+
+
+    // chart.data = [{'year': "2012", 'GCliPP_cd8_merged.bam': 4, 'GCliPP_cd8_merged':2}, {'year': "2022", 'GCliPP_cd8_merged.bam': 5, 'GCliPP_cd8_merged':3}, {'year': "2033", 'GCliPP_cd8_merged.bam': 2, 'GCliPP_cd8_merged':5}]
+
+
+
+    chart.dateFormatter.inputDateFormat = "yyyy";
+    var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+    // dateAxis.renderer.minGridDistance = 60;
+    dateAxis.startLocation = 0.5;
+    dateAxis.endLocation = 0.5;
+    dateAxis.baseInterval = {
+      timeUnit: "year",
+      count: 1
+    }
+
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    // valueAxis.min = 142906793;
+    valueAxis.tooltip.disabled = true;
+    // bam_files = ['GCliPP_everything.bam', 'miR29_WT_Th17.bam']
+    // bam_files = ['cars', 'motorcycles', 'bicycles']
+    $.each(bam_files, function(ind, val){
+        
+        var series = chart.series.push(new am4charts.LineSeries());
+        series.name = val;
+        series.dataFields.dateX = "year";
+        series.dataFields.valueY =  val;
+        // series.tooltipHTML = "<img src='https://www.amcharts.com/lib/3/images/car.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:21px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+        series.tooltip.background.fill = am4core.color("#FFF");
+        series.tooltip.getStrokeFromObject = true;
+        series.tooltip.background.strokeWidth = 3;
+        series.tooltip.getFillFromObject = false;
+        series.defaultState.transitionDuration = 1000;
+        series.fillOpacity = 0.6;
+        series.strokeWidth = 2;
+        series.stacked = true;
+
+
+
+
+        // axis ranges
+        var range = dateAxis.axisRanges.create();
+        range.date = new Date(2001, 1, 1);
+        range.endDate = new Date(2003, 1, 1);
+        range.axisFill.fill = chart.colors.getIndex(7);
+        range.axisFill.fillOpacity = 0.2;
+
+        range.label.text = val;
+        range.label.inside = true;
+        range.label.rotation = 90;
+        range.label.horizontalCenter = "right";
+        range.label.verticalCenter = "middle";
+
+
+
+
+
+    })
+   
+    // var series2 = chart.series.push(new am4charts.LineSeries());
+    // series2.name = "motorcycles";
+    // series2.dataFields.dateX = "year";
+    // series2.dataFields.valueY = "motorcycles";
+    // series2.tooltipHTML = "<img src='https://www.amcharts.com/lib/3/images/motorcycle.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:21px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+    // series2.tooltip.background.fill = am4core.color("#FFF");
+    // series2.tooltip.getFillFromObject = false;
+    // series2.tooltip.getStrokeFromObject = true;
+    // series2.tooltip.background.strokeWidth = 3;
+    // series2.sequencedInterpolation = true;
+    // series2.fillOpacity = 0.6;
+    // series2.stacked = true;
+    // series2.strokeWidth = 2;
+
+    // var series3 = chart.series.push(new am4charts.LineSeries());
+    // series3.name = "bicycles";
+    // series3.dataFields.dateX = "year";
+    // series3.dataFields.valueY = "bicycles";
+    // series3.tooltipHTML = "<img src='https://www.amcharts.com/lib/3/images/bicycle.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:21px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
+    // series3.tooltip.background.fill = am4core.color("#FFF");
+    // series3.tooltip.getFillFromObject = false;
+    // series3.tooltip.getStrokeFromObject = true;
+    // series3.tooltip.background.strokeWidth = 3;
+    // series3.sequencedInterpolation = true;
+    // series3.fillOpacity = 0.6;
+    // series3.defaultState.transitionDuration = 1000;
+    // series3.stacked = true;
+    // series3.strokeWidth = 2;
+
+    chart.cursor = new am4charts.XYCursor();
+    chart.cursor.xAxis = dateAxis;
+    chart.scrollbarX = new am4core.Scrollbar();
+
+    // Add a legend
+    // chart.legend = new am4charts.Legend();
+    // chart.legend.position = "top";
+
+    // // axis ranges
+    // var range = dateAxis.axisRanges.create();
+    // range.date = new Date(2001, 1, 1);
+    // range.endDate = new Date(2003, 1, 1);
+    // range.axisFill.fill = chart.colors.getIndex(7);
+    // range.axisFill.fillOpacity = 0.2;
+
+    // range.label.text = "Fines for speeding increased";
+    // range.label.inside = true;
+    // range.label.rotation = 90;
+    // range.label.horizontalCenter = "right";
+    // range.label.verticalCenter = "middle";
+
+    // var range2 = dateAxis.axisRanges.create();
+    // range2.date = new Date(2007, 1, 1);
+    // range2.grid.stroke = chart.colors.getIndex(7);
+    // range2.grid.strokeOpacity = 0.6;
+    // range2.grid.strokeDasharray = "5,2";
+
+
+    // range2.label.text = "Motorcycle fee introduced";
+    // range2.label.inside = true;
+    // range2.label.rotation = 90;
+    // range2.label.horizontalCenter = "right";
+    // range2.label.verticalCenter = "middle";
+
+
+}
+
+// var datas = [{'GCliPP_cd8_merged.bam': 1100, 'year': '211324'}, {'GCliPP_cd8_merged.bam': 2100, 'year': '211425'}, {'GCliPP_cd8_merged.bam': 5100, 'year': '211526'}, {'GCliPP_cd8_merged.bam': 4100, 'year': '211527'}, {'GCliPP_cd8_merged.bam': 3100, 'year': '211628'}, {'GCliPP_cd8_merged.bam': 6100, 'year': '211729'}, {'GCliPP_cd8_merged.bam': 1100, 'year': '211720'}]
+
+// var datas = [
+//     {
+//       'GCliPP_cd8_merged.bam': 6, 
+//       'year': String((1429067500+100)-1429067500)
+//     },
+//     {
+//       'GCliPP_cd8_merged.bam': 4, 
+//       'year': String((1429067501+100)-1429067500)
+//     },
+//     {
+//       'GCliPP_cd8_merged.bam': 8,
+//       'year': String((1429067502+100)-1429067500)
+//     },
+//     {
+//       'GCliPP_cd8_merged.bam': 4, 
+//       'year': String((1429067503+100)-1429067500)
+//     },
+//     {
+//       'GCliPP_cd8_merged.bam': 8,
+//       'year': String((1429067504+100)-1429067500)
+//     }
+// ,
+//     {
+//       'GCliPP_cd8_merged.bam': 8,
+//       'year': String((1429067505+100)-1429067500)
+//     },
+//     {
+//       'GCliPP_cd8_merged.bam': 4, 
+//       'year': String((1429067506+100)-1429067500)
+//     },
+//     {
+//       'GCliPP_cd8_merged.bam': 8,
+//       'year': String((1429067507+100)-1429067500)
+//     }
+
+
+//   ]
+
+
+
+// var bam_files = ['GCliPP_cd8_merged.bam']
+
+
+// get_graph(datas, bam_files)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+   </script>
+   
+{% endblock %}
+   

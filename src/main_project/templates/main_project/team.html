@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_extra_html_css %}
+<!-- nothing here -->
+{% endblock %}
+
+{% block content %}
+
+    <section id="our-team">
+       <div class="container">
+          <div class="row">
+              <div class="col-sm-12" id="text-area">
+                  <p class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".5s">OUR TEAM</p>
+                  <h6 class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".7s">meet the team </h6>
+                  <hr class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".9s" id="team-line">
+              </div>
+          </div>
+       </div>
+    </section>
+
+    <section id="team-number-section">
+      <div class="container">
+         <div class="row">
+             <div class="col-sm-12" style="margin-left: 168px">
+<!--                 <div class="col-sm-4 wow fadeIn" data-wow-duration="5.1s" data-wow-delay="1s" id="team-img">
+                    <img src="{%  static 'main_design/img/team1.png' %}">
+                    <p id="team-member-name">J. Renz</p>
+                    <hr id="team-member-line">
+                    <p id="team-member-des">Enim semper, gravida interdum nullam, pellentesque adipiscing scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac sollicitudin varius integer laoreet morbi porta</p>
+                </div> -->
+                <div class="col-sm-4 wow fadeIn" data-wow-duration="5.1s" data-wow-delay="1.5s" id="team-img">
+                    <img src="{%  static 'main_design/img/DSC04250.JPG' %}">
+                    <p id="team-member-name">Shaan Sekhon</p>
+                    <hr id="team-member-line">
+                    <p id="team-member-des">-----</p>
+                </div>
+                <div class="col-sm-4 wow fadeIn" data-wow-duration="5.1s" data-wow-delay="2s" id="team-img">
+                    <img src="{%  static 'main_design/img/Robin Kageyama, PhD.png' %}">
+                    <p id="team-member-name">Robin Kageyama, PhD</p>
+                    <hr id="team-member-line">
+                    <p id="team-member-des">----</p>
+                </div>
+             </div>
+         </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+{% block footer_extra_html_css %}
+  <script>
+        $(document).ready(function(){
+          $('.team_menu').addClass('active-page')
+        })
+   </script>
+{% endblock %}
