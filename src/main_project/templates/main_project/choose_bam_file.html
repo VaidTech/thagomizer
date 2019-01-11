@@ -53,10 +53,9 @@
         $(document).ready(function(){
           $('.team_menu').addClass('active-page')
         })
-
-        var array_value_of_all_selected_file_name = ['GCliPP_cd8_merged.bam', 'GCliPP_cd8_merged2.bam']
-
-        var to_send_url = {% url 'main_project:graphing_dashboard' %}+'/?genome=mm10&&files='+array_value_of_all_selected_file_name
-
+        var to_send_url  = 'hi'
+        
+        var to_send_url = "{% url 'main_project:graphing_dashboard' %}/?genome=mm10&files[]=GCliPP_cd8_merged&files[]=GCliPP_cd8_merged2.bam"
+        console.log(to_send_url)
    </script>
 {% endblock %}
