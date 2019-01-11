@@ -7,44 +7,87 @@
 
 {% block content %}
 
-    <section id="our-team">
-       <div class="container">
-          <div class="row">
-              <div class="col-sm-12" id="text-area">
-                  <p class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".5s">Choose Bam File</p>
-                  <h6 class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".7s">meet the team </h6>
-                  <hr class="wow fadeIn" data-wow-duration="5.1s" data-wow-delay=".9s" id="team-line">
+  <section id="select-img-body">
+    <div class="container select-img-container">
+        <div class="row">
+            <div class="col-sm-12">
+              <div class="slect-box-img-title">
+                    <p class="select-box-img-title">Select an Experiment</p>
+                    <p class="select-box-img-subtitle">human</p>
               </div>
-          </div>
-       </div>
-    </section>
+              <div class="col-sm-3 select-img-box1 all-box-same-class">
+                <i class="far fa-circle select-img-circle"></i>
+                <img data-file="jurkat_all.bam" src="{%  static 'main_design/img/jurkat_all.bam.png' %}" class="select-img-src1">
 
-    <section id="team-number-section">
-      <div class="container">
-         <div class="row">
-             <div class="col-sm-12" style="margin-left: 168px">
-<!--                 <div class="col-sm-4 wow fadeIn" data-wow-duration="5.1s" data-wow-delay="1s" id="team-img">
-                    <img src="{%  static 'main_design/img/team1.png' %}">
-                    <p id="team-member-name">J. Renz</p>
-                    <hr id="team-member-line">
-                    <p id="team-member-des">Enim semper, gravida interdum nullam, pellentesque adipiscing scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac sollicitudin varius integer laoreet morbi porta</p>
-                </div> -->
-                <div class="col-sm-4 wow fadeIn" data-wow-duration="5.1s" data-wow-delay="1.5s" id="team-img">
-                    <img src="{%  static 'main_design/img/DSC04250.JPG' %}">
-                    <p id="team-member-name">Shaan Sekhon</p>
-                    <hr id="team-member-line">
-                    <p id="team-member-des">-----</p>
+              </div>  
+            </div>
+            <div class="col-sm-12">
+               <div class="slect-box-img-title">
+                    <p class="select-box-img-subtitle2">mouse</p>
+              </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="GCliPP_cd8_merged.bam" src="{%  static 'main_design/img/GCliPP_cd8_merged.bam.png' %}" class="select-img-src2">
                 </div>
-                <div class="col-sm-4 wow fadeIn" data-wow-duration="5.1s" data-wow-delay="2s" id="team-img">
-                    <img src="{%  static 'main_design/img/Robin Kageyama, PhD.png' %}">
-                    <p id="team-member-name">Robin Kageyama, PhD</p>
-                    <hr id="team-member-line">
-                    <p id="team-member-des">----</p>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="GCliPP_everything.bam" src="{%  static 'main_design/img/GCliPP_everything.bam.png' %}" class="select-img-src2">
                 </div>
-             </div>
-         </div>
-      </div>
-    </section>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="GCliPP_minus_merged.bam" src="{%  static 'main_design/img/GCliPP_minus_merged.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="GCliPP_plus_merged.bam" src="{%  static 'main_design/img/GCliPP_plus_merged.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="GCliPP_th2_merged.bam" src="{%  static 'main_design/img/GCliPP_th2_merged.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="Loeb_ko_sorted.bam" src="{%  static 'main_design/img/Loeb_ko_sorted.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="Loeb_wt_sorted.bam" src="{%  static 'main_design/img/Loeb_wt_sorted.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="miR15-16_cKO_RNAseq.bam" src="{%  static 'main_design/img/miR15-16_cKO_RNAseq.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="miR15-16_FL_RNAseq.bam" src="{%  static 'main_design/img/miR15-16_FL_RNAseq.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="miR29_KO_Th17.bam" src="{%  static 'main_design/img/miR29_KO_Th17.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="miR29_WT_All.bam" src="{%  static 'main_design/img/miR29_WT_All.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="miR29_WT_Th2.bam" src="{%  static 'main_design/img/miR29_WT_Th2.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="miR29_WT_Th17.bam" src="{%  static 'main_design/img/miR29_WT_Th17.bam.png' %}" class="select-img-src2">
+                </div>
+                <div class="col-sm-3 select-img-box2 all-box-same-class">
+                    <i class="far fa-circle select-img-circle"></i>
+                    <img data-file="RNAseq_Th2_stimulated.bam" src="{%  static 'main_design/img/RNAseq_Th2_stimulated.bam.png' %}" class="select-img-src2">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                  <p class="plot-button-class">Plot</p>
+            </div>
+        </div>
+    </div>
+  </section>
 
 {% endblock %}
 
@@ -55,7 +98,10 @@
         })
         var to_send_url  = 'hi'
         
-        var to_send_url = "{% url 'main_project:graphing_dashboard' %}/?genome=mm10&files[]=GCliPP_cd8_merged&files[]=GCliPP_cd8_merged2.bam"
-        console.log(to_send_url)
+        // mm10/hg38
+        
+
+       // var to_send_url = "{% url 'main_project:graphing_dashboard' %}/?genome=mm10&files[]=GCliPP_cd8_merged&files[]=GCliPP_cd8_merged2.bam"
+       // console.log(to_send_url)
    </script>
 {% endblock %}

@@ -181,8 +181,8 @@ i#myBtn {
                   Part two section
 *********************************************************/
 #part-two-section {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     background-color: #1b1a1a;
     outline: none;
 }
@@ -233,8 +233,8 @@ i#myBtn {
     margin-bottom: 40px;
 }
 #part-three-section {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 0px;
+    padding-bottom: 100px;
     background-color: #1b1a1a;
     outline: none;
 }
@@ -1218,6 +1218,85 @@ div#send-message-div {
  height:auto;
 
 }
+.button-over-video {
+    position: absolute;
+    top: 90%;
+    margin-left: 40%;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+}
+.button-over-video-text {
+    padding: 7px 25px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+.button-over-video-text:hover{
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+/************************************************
+               choose ban file
+**************************************************/
+.select-img-src1 {
+    width: 100%;
+    cursor: pointer;
+}
+.slect-box-img-title {
+    padding-top: 85px;
+}
+.select-box-img-title {
+    font-size: 40px;
+    border-bottom: 1px solid white;
+}
+.select-box-img-subtitle {
+    font-size: 20px;
+}
+.select-box-img-subtitle2 {
+    font-size: 20px;
+    border-bottom: 1px solid white;
+}
+.select-img-src2{
+    width: 100%;
+    cursor: pointer;
+}
+.select-img-circle {
+    position: absolute;
+    float: right;
+    right: 15px;
+    margin-top: 20px;
+    font-size: 35px;
+    background-color: black;
+    border-radius: 50px;
+}
+.plot-button-class {
+    float: right;
+    display: block;
+    background-color: black;
+    padding: 10px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+
+
 /************************************************
                 media-query
 **************************************************/
@@ -1521,12 +1600,49 @@ section#img-gallery-section {
     margin-bottom: 0px;
 }
 .content {
-    top: 16%;
+    top: 10%;
     margin-left: 38%;
 }
 i#myBtn {
     font-size: 65px;
 }
+.button-over-video {
+    margin-left: 23%;
+    top: 23%;
+}
+.button-over-video-text {
+    padding: 5px 10px;
+    font-size: 10px;
+}
+.part-two-title {
+    font-size: 20px;
+}
+.part-two-subtitle {
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
