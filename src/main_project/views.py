@@ -47,8 +47,11 @@ def report(request):
 
 	return render(request, 'main_project/report.html')
 
-def graphing_dashboard(request):
+def choose_bam_file(request):
+	return render(request, 'main_project/choose_bam_file.html')	
 
+
+def graphing_dashboard(request):
 
 	try:
 
