@@ -10,7 +10,7 @@ from main_project.graphy.functions import *
 
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 import json
 from django.core.mail import EmailMultiAlternatives
@@ -53,6 +53,12 @@ def choose_bam_file(request):
 
 def graphing_dashboard(request):
 
+	genome = request.GET.get('genome', False)
+	bam_files = request.GET.getlist('files[]')
+
+	if genome is False or len(bam_files) < 1:
+		return redirect('main_project:choose_bam_file')
+
 	try:
 
 		data_file_mm10 = []
@@ -90,9 +96,11 @@ def graphing_dashboard(request):
 	options_list = get_target_scan(file_targetscan)
 	
 	context = {
-		'options_list':options_list,
-		'data_file_mm10':data_file_mm10,
-		'data_file_hg19':data_file_hg19
+		'genome': genome,
+		'bam_files': bam_files,
+		'options_list': options_list,
+		'data_file_mm10': data_file_mm10,
+		'data_file_hg19': data_file_hg19
 	}
 	return render(request, 'main_project/graphing_dashboard.html', context)
 

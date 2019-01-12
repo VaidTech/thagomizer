@@ -596,18 +596,36 @@ var get_graph = function(data, bam_files){
 
 
 
+/*******************************
+  audo add Genome and bam files
+*******************************/
 
 
 
+{% if genome == 'hg38' %}
+  $('#genome-check-box2').trigger('click')
+{% endif %}
 
+{% for bam_file in bam_files %}
 
+  {% if forloop.counter0 != 0 %}
+    $('#add-button').trigger('click')
+    // $('#add-here select:eq(0)').hide()
+  {% endif %}
 
+  {% if genome == 'hg38' %} //since we are using hg38 as hg19 in folders and code as it was a last moment change
+    var this_val = 'hg19/{{ bam_file }}'
+  {% else %}
+    var this_val = '{{ genome }}/{{ bam_file }}'
+  {% endif %}
+  
+  $('#add-here select:eq({{ forloop.counter0 }})').val(this_val)
 
+{% endfor %}
 
-
-
-
-
+/*******************************
+            End
+*******************************/
 
 
 

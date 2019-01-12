@@ -158,42 +158,42 @@ $(window).scroll(function(){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////CHOOSE BAM FILE/////////////////////////////////////////////////////////  
 // http://localhost:8000/graphing_dashboard?genome=mm10&files[]=GCliPP_cd8_merged&files[]=GCliPP_cd8_merged2.bam
-var circleBoxType="";
-var linkaddfinal = "";
-var link = 'http://localhost:8000/graphing_dashboard?genome='
+// var circleBoxType="";
+// var linkaddfinal = "";
+// var link = 'http://localhost:8000/graphing_dashboard?genome='
 
-$(".select-img-box1").click(function(){
-   $(".select-img-circle",this).toggleClass("far fas");
-   $(".select-img-box2 .select-img-circle").removeClass("fas")
-   $(".select-img-box2 .select-img-circle").addClass("far")
-   $(this).toggleClass("this-box-is-selected")
-   $(".select-img-box2").removeClass("this-box-is-selected")
-   circleBoxType="hg38&"
+// $(".select-img-box1").click(function(){
+//    $(".select-img-circle",this).toggleClass("far fas");
+//    $(".select-img-box2 .select-img-circle").removeClass("fas")
+//    $(".select-img-box2 .select-img-circle").addClass("far")
+//    $(this).toggleClass("this-box-is-selected")
+//    $(".select-img-box2").removeClass("this-box-is-selected")
+//    circleBoxType="hg38&"
 
-})
+// })
 
-$(".select-img-box2").click(function(){
-   $(".select-img-circle",this).toggleClass("far fas");
-   $(".select-img-box1 .select-img-circle").removeClass("fas")
-   $(".select-img-box1 .select-img-circle").addClass("far")
-   $(this).toggleClass("this-box-is-selected")
-   $(".select-img-box1").removeClass("this-box-is-selected")
-   circleBoxType="mm10&"
-})
+// $(".select-img-box2").click(function(){
+//    $(".select-img-circle",this).toggleClass("far fas");
+//    $(".select-img-box1 .select-img-circle").removeClass("fas")
+//    $(".select-img-box1 .select-img-circle").addClass("far")
+//    $(this).toggleClass("this-box-is-selected")
+//    $(".select-img-box1").removeClass("this-box-is-selected")
+//    circleBoxType="mm10&"
+// })
 
-$(".plot-button-class").click(function(){
-   console.log(circleBoxType)
-   if ($(".all-box-same-class").hasClass("this-box-is-selected")) {
-        $('.this-box-is-selected img').each(function() {
-            var mylist = $(this).attr('data-file')
-            var linkaddclick = 'files[]='+mylist
-            linkaddfinal += linkaddclick+'&'
-        });
+// $(".plot-button-class").click(function(){
+//    console.log(circleBoxType)
+//    if ($(".all-box-same-class").hasClass("this-box-is-selected")) {
+//         $('.this-box-is-selected img').each(function() {
+//             var mylist = $(this).attr('data-file')
+//             var linkaddclick = 'files[]='+mylist
+//             linkaddfinal += linkaddclick+'&'
+//         });
         
-    }
-    var sendfinallink = link+circleBoxType+linkaddfinal
-    console.log(sendfinallink)
-})
+//     }
+//     var sendfinallink = link+circleBoxType+linkaddfinal
+//     console.log(sendfinallink)
+// })
 
 })
 

@@ -8,5 +8,5 @@ urlpatterns = [
     	path('report', report, name='report'),
     	path('graphy', graphy, name='graphy'),
     	path('choose_bam_file', choose_bam_file, name='choose_bam_file'),
-    	path('graphing_dashboard', graphing_dashboard, name='graphing_dashboard'),
+    	path('graphing_dashboard/', graphing_dashboard, name='graphing_dashboard'),
 ]
