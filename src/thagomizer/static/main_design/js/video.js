@@ -113,7 +113,7 @@ var lastId,
     });
 
 $(".side-scroll-class").click(function(){
-     topMenuHeight = topMenu.outerHeight()+50
+     topMenuHeight = topMenu.outerHeight()-50
 })   
 $(window).scroll(function(){
      topMenuHeight = topMenu.outerHeight()+350

@@ -15,7 +15,7 @@ a {
 section#main-menu {
     background-color: black;
     position: fixed;
-    z-index: 1000;
+    z-index: 100000;
     width: 100%;
     height: 61px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -163,6 +163,8 @@ ul#mobile-menu-list li:hover{
   height: 75%;
   cursor: pointer;
   margin-bottom: -8px;
+  position: relative;
+  z-index: 100;
 }
 .content {
   position: absolute;
@@ -171,6 +173,7 @@ ul#mobile-menu-list li:hover{
   text-align: center;
   padding: 20px;
   cursor: pointer;
+  z-index: 1000;
 }
 i#myBtn {
     font-size: 100px;
@@ -182,7 +185,6 @@ i#myBtn {
 *********************************************************/
 #part-two-section {
     padding-top: 100px;
-    padding-bottom: 100px;
     background-color: #1b1a1a;
     outline: none;
 }
@@ -230,6 +232,7 @@ i#myBtn {
                   Part three section
 *********************************************************/
 .three-part-text {
+    padding-top: 100px;
     margin-bottom: 40px;
 }
 #part-three-section {
@@ -310,7 +313,7 @@ section.side-row {
     color: white;
     cursor: pointer;
     outline: none;
-    z-index: 1000000;
+    z-index: 10;
 }
 .side-menu-ul {
     padding-left: 4px;
@@ -1225,6 +1228,7 @@ div#send-message-div {
     text-align: center;
     padding: 20px;
     cursor: pointer;
+    z-index: 1000;
 }
 .button-over-video-text {
     padding: 7px 25px;
