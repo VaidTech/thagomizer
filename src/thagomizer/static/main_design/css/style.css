@@ -209,7 +209,6 @@ i#myBtn {
     font-weight: 800;
     letter-spacing: 2px;
     font-family: 'Oswald', sans-serif;
-    margin-bottom: -5px;
 }
 .part-two-subtitle{
     font-style: italic;
@@ -224,6 +223,7 @@ i#myBtn {
 }
 .three-title-margin{
     margin-left: -10px;
+    margin-bottom: -7px;
 }
 .part-two-title-box{
     margin-bottom: 80px;
