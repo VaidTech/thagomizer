@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{%  static 'main_design/css/fluid-gallery.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
@@ -37,12 +38,8 @@
     <section id="main-menu">
     	<div class="container">
            <div class="row">
-               <div class="col-sm-2">
-                  <p id="logo">THAGOMIZER</p>
-               </div>
-               <div class="col-sm-2">
-               </div>
-               <div class="col-sm-8">
+               <div class="col-sm-12 menu-main-class">
+                 <p id="logo">THAGOMIZER</p>
                   <ul id="menu-list">
                   	  <li id="menu-list-name"><a href="{% url 'main_project:home' %}" class="home_menu">Home</a></li>
                   	  <!-- <li id="menu-list-name"><a href="{% url 'main_project:graphing_dashboard' %}" class="graphing_dashboard_menu">Plot GCLiPP</a></li>

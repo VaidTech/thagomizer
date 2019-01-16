@@ -116,7 +116,7 @@ $(".side-scroll-class").click(function(){
      topMenuHeight = topMenu.outerHeight()-50
 })   
 $(window).scroll(function(){
-     topMenuHeight = topMenu.outerHeight()+350
+     topMenuHeight = topMenu.outerHeight()+440
 })  
 
 // Bind click handler to menu items
