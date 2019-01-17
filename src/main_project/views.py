@@ -251,7 +251,7 @@ def graphy(request):
 					real_value[this_index][bam_file] = values_of_this_bam[val2]
 			
 
-		print(real_value)
+		# print(real_value)
 		outputsuffix = 'static/Output/'+geneid+outputsuffix+'.png'
 
 		return {
@@ -344,9 +344,9 @@ def graphy(request):
 	except Exception as e:
 		exc_type, exc_obj, exc_tb = sys.exc_info()
 		fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-		print('')
+		# print('')
 		print(e, exc_type, fname, exc_tb.tb_lineno)
-		print('')
+		# print('')
 		# print(e)
 		return JsonResponse('error', safe=False)
 
