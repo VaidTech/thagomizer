@@ -41,7 +41,7 @@ p#logo {
 }
 ul#menu-list{
     float: right;
-	padding-top: 22px;
+	padding-top: 28px;
     z-index: 10000;
     position: inherit;
 
@@ -52,10 +52,10 @@ ul#menu-list li {
     list-style: none;
 }
 ul#menu-list li {
-    font-size: 12px;
+    font-size: 10px;
     color: white;
     font-family: 'Poppins', sans-serif;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 2px;
     cursor: pointer;
     text-decoration: none;
@@ -173,12 +173,13 @@ ul#mobile-menu-list li:hover{
 #myVideo {
   right: 0;
   bottom: 0;
-  width: 100%; 
+  width: 105%; 
   height: 75%;
   cursor: pointer;
   margin-bottom: -8px;
   position: relative;
   z-index: 100;
+  outline: none;
 }
 .content {
     width: 100%;
@@ -193,6 +194,12 @@ i#myBtn {
     font-size: 100px;
     color: #565555;
     cursor: pointer;
+    opacity: 1;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 /********************************************************
                   Part two section
@@ -1264,16 +1271,22 @@ div#send-message-div {
     margin-left: 10px;
 }
 .button-over-video-text {
+    position: absolute;
+    z-index: 4000;
+    text-align: center;
+    width: 20%;
     padding: 7px 25px;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
     border: 1px solid white;
-    color: white;
+    color: white !important;
     text-decoration: none;
     font-size: 14px;
+    margin-left: 41%;
+    margin-top: 47%;
 }
 .button-over-video-text:hover{
-    color: white;
+    color: white !important;
     text-decoration: none;
 }
 
