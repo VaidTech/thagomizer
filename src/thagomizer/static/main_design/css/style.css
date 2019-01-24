@@ -275,18 +275,7 @@ i#myBtn {
 
 @-moz-document url-prefix() {
 
-    .img-second-row {
-            margin-top: 60px !important;
-    }
-    .part-three-row-two {
-        margin-top: 60px !important;
-    }
-    .part-two-title-box {
-        margin-bottom: 80px !important;
-    }
-    .three-part-text {
-        margin-bottom: 80px !important;
-    }
+    
 
 }
 
