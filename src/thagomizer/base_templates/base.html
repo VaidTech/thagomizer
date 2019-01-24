@@ -10,14 +10,14 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{%  static 'main_design/css/style.css' %}?v=2.0" />
+    <link rel="stylesheet" type="text/css" href="{%  static 'main_design/css/style.css' %}?v=2.1" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
     <link rel="stylesheet" href="{%  static 'main_design/css/fluid-gallery.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
@@ -45,7 +45,7 @@
                   	  <li id="menu-list-name"><a href="{% url 'main_project:home' %}" class="home_menu">Home</a></li>
                   	  <!-- <li id="menu-list-name"><a href="{% url 'main_project:graphing_dashboard' %}" class="graphing_dashboard_menu">Plot GCLiPP</a></li>
                        -->
-                       <li id="menu-list-name"><a href="{% url 'main_project:choose_bam_file' %}" class="graphing_dashboard_menu">Plot GCLiPP</a></li>
+                       <li id="menu-list-name"><a href="{% url 'main_project:choose_bam_file' %}" class="graphing_dashboard_menu">Plot CLiP</a></li>
                   	  <li id="menu-list-name"><a href="{% url 'main_project:team' %}" class="team_menu"_menu>Team Page</a></li>
                   	  <li id="menu-list-name"><a href="{% url 'main_project:report' %}" class="report_menu">Report Bugs</a></li>
                   </ul>
@@ -61,7 +61,7 @@
         </div>
     	<ul id="mobile-menu-list">
             <a href="{% url 'main_project:home' %}"><li id="mobile-menu-list-name" class="home_menu ">Home</li></a>
-            <a href="{% url 'main_project:graphing_dashboard' %}"><li id="mobile-menu-list-name" class="graphing_dashboard_menu">Plot GCLiPP</li></a>
+            <a href="{% url 'main_project:graphing_dashboard' %}"><li id="mobile-menu-list-name" class="graphing_dashboard_menu">Plot CLiP</li></a>
             <a href="{% url 'main_project:team' %}"><li id="mobile-menu-list-name" class="team_menu">Team Page</li></a>
             <a href="{% url 'main_project:report' %}"><li id="mobile-menu-list-name" class="report_menu">Report Bugs</li></a>
         </ul>
@@ -127,7 +127,7 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"/></script>
-   <script type="text/javascript" src="{%  static 'main_design/js/main.js' %}?v=2.5"></script>
+   <script type="text/javascript" src="{%  static 'main_design/js/main.js' %}?v=2.6"></script>
    <script type="text/javascript" src="{%  static 'main_design/js/video.js' %}"></script>
 {% block footer_extra_html_css %}
 {% endblock %}
