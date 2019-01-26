@@ -199,7 +199,7 @@ i#myBtn {
     font-size: 100px;
     color: #565555;
     cursor: pointer;
-    opacity: 1;
+    opacity: 0;
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -ms-transition: all .5s ease-in-out;
@@ -285,7 +285,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
     #myVideo {
     right: 0;
     bottom: 0;
-    width: 130%;
+    width: 115%;
     cursor: pointer;
     margin-bottom: -8px;
     position: relative;
@@ -293,7 +293,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
     outline: none;
     }
     .button-over-video-text{
-        margin-top: 60% !important;
+        margin-top: 53% !important;
     }
     .img-second-row {
         margin-top: 60px !important;
@@ -317,7 +317,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
         #myVideo {
         right: 0;
         bottom: 0;
-        width: 130%;
+        width: 115%;
         cursor: pointer;
         margin-bottom: -8px;
         position: relative;
@@ -325,7 +325,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
         outline: none;
         }
         .button-over-video-text{
-            margin-top: 60% !important;
+            margin-top: 53% !important;
         }
         .img-second-row {
             margin-top: 60px !important;
@@ -350,7 +350,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
         #myVideo {
         right: 0;
         bottom: 0;
-        width: 130%;
+        width: 115%;
         cursor: pointer;
         margin-bottom: -8px;
         position: relative;
@@ -358,7 +358,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
         outline: none;
         }
         .button-over-video-text{
-            margin-top: 60% !important;
+            margin-top: 53% !important;
         }
         .img-second-row {
             margin-top: 60px !important;
