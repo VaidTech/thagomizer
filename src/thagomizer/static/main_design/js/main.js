@@ -799,12 +799,14 @@ $('#genome-check-box1').trigger('click')  //always mm10 selected
 
         })
 
+
         checkBoxArray = []
+
+
+        //new way
         $('.checkbox').each(function(){
           
-          
-          // if ($('#genome-check-box2').is(':checked')){
-          if ($(this).is(':checked')){
+          if ($('.toggle_antisense').is(':checked')){
             this_check_box_value = 'as'
           }else{
             this_check_box_value = 's'
@@ -812,6 +814,20 @@ $('#genome-check-box1').trigger('click')  //always mm10 selected
           checkBoxArray.push(this_check_box_value)
           
         })
+
+        //old way
+        // $('.checkbox').each(function(){
+          
+          
+        //   // if ($('#genome-check-box2').is(':checked')){
+        //   if ($(this).is(':checked')){
+        //     this_check_box_value = 'as'
+        //   }else{
+        //     this_check_box_value = 's'
+        //   }
+        //   checkBoxArray.push(this_check_box_value)
+          
+        // })
 
         colorArray = []
         $('.jscolor').each(function(){
