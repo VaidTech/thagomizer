@@ -30,6 +30,29 @@ body {
   display: none!important;
   -webkit-appearance: none;
 }
+
+
+*::-moz-media-controls-panel {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+/* Old shadow dom for play button */
+
+*::-moz-media-controls-play-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+/* New shadow dom for play button */
+
+/* This one works! */
+
+*::-moz-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+ 
 .container {
     width: 100%;
     padding-left: 5%;

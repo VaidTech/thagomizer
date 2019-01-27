@@ -1,5 +1,6 @@
 $(document).ready(function(){  
-	
+
+/*	
 var vid = document.getElementById("myVideo"); 
 var video = document.getElementById("myVideo");
 var btn = document.getElementById("myBtn");
@@ -78,7 +79,7 @@ $(".icon-play").click(function(){
 		$("#myBtn").toggleClass('fa-pause-circle fa-play-circle');
 		setTimeout(function() { $("#myBtn").css('opacity','0'); }, 600);
 })
-
+*/
 
 
 //////////////////////////click the side menu
@@ -186,10 +187,7 @@ $(window).scroll(function(){
 //Wow effect
   new WOW().init();
 
-var vids = $("video"); 
-$.each(vids, function(){
-       this.controls = false; 
-}); 
+/*var vids = $("video"); 
 //Loop though all Video tags and set Controls as false
 
 $("video").click(function() {
@@ -199,7 +197,7 @@ $("video").click(function() {
   } else {
     this.play();
   }
-});
+});*/
   
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
