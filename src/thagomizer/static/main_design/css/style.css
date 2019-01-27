@@ -4,8 +4,14 @@
 html, body {
   height: 100%;
 }
+::-webkit-scrollbar { 
+    display:  !important; 
+}
 body {
   overflow-x: hidden;
+}
+#video-section {
+    outline: none;
 }
 /* This used to work for the parent element of button divs */
 /* But it does not work with newer browsers, the below doesn't hide the play button parent div */

@@ -194,50 +194,71 @@ $(window).scroll(function(){
         window.scrollTo( 0, 900 );
       } 
 
-      window.addEventListener('scroll', noscroll);
+      window.addEventListener('scroll', noscroll);.on('mousemove', throttle(function (event)
 
 })*/
+function throttle(fn, threshhold, scope) {
+  threshhold || (threshhold = 250);
+  var last,
+      deferTimer;
+  return function () {
+    var context = scope || this;
+  
+    var now = +new Date,
+        args = arguments;
+    if (last && now < last + threshhold) {
+      // hold on to it
+      clearTimeout(deferTimer);
+      deferTimer = setTimeout(function () {
+        last = now;
+        fn.apply(context, args);
+      }, threshhold);
+    } else {
+      last = now;
+      fn.apply(context, args);
+    }
+  };
+}
 
-
-$('#video-section').bind('mousewheel', function(e) {
-    if(e.originalEvent.wheelDelta / 120 > 0) {
+$('#video-section').on('mousewheel', throttle(function(e) {
+    if(e.originalEvent.wheelDelta / 1 > 0) {
         // $( ".one-button-click" ).trigger('click');
         console.log('video section up')
     }else {
          $( ".button-over-video-text" ).trigger('click');    
          console.log('vidoe section donw')
     }
-});
+}));
 
-$('#part-two-section').bind('mousewheel', function(e) {
-    if(e.originalEvent.wheelDelta / 120 > 0) {
+$('#part-two-section').bind('mousewheel', throttle(function(e) {
+    if(e.originalEvent.wheelDelta / 1 > 0) {
         $( ".part-two-up" ).trigger('click');
         console.log('part two section up')
     }else {
          $( ".part-two-down" ).trigger('click');    
          console.log('part two section down')
     }
-});
+}));
 
-$('#part-three-section').bind('mousewheel', function(e) {
-    if(e.originalEvent.wheelDelta / 120 > 0) {
+$('#part-three-section').bind('mousewheel', throttle(function(e) {
+    if(e.originalEvent.wheelDelta / 1 > 0) {
         $( ".part-three-up" ).trigger('click');
         console.log('part three section up')
     }else {
          $( ".part-three-down" ).trigger('click');    
          console.log('part three section down')
     }
-});
+}));
 
-$('#footer-section').bind('mousewheel', function(e) {
-    if(e.originalEvent.wheelDelta / 120 > 0) {
+$('#footer-section').bind('mousewheel', throttle(function(e) {
+    if(e.originalEvent.wheelDelta / 1 > 0) {
         $( ".part-four-up" ).trigger('click');
         console.log('part 4 section up')
     }else {
-         $( ".four-button-click" ).trigger('click');    
+            
          // console.log('part 4 section down')
     }
-});
+}));
 
 /*var lastScrollTop = 0;
 $(window).scroll(function(event){
