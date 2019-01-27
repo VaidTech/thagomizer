@@ -12,7 +12,7 @@ $("#myBtn").click(function(){
     vid.play();
     console.log("play now")
   } else {
-    vid.pause();
+    vid.play();
     console.log("stop now")
   }
 })
@@ -23,9 +23,9 @@ $(".video-play-with").click(function(){
     $('#myBtn').removeClass("fa-play-circle").addClass("fa-pause-circle");
     setTimeout(function() { $("#myBtn").css('opacity','0'); }, 600);
   } else {
-    vid.pause();
+    vid.play();
     $('#myBtn').removeClass("fa-pause-circle").addClass("fa-play-circle");
-    $('#myBtn').css('opacity','1')
+    $('#myBtn').css('opacity','0')
   }
 })
 
@@ -36,9 +36,9 @@ $("#myBtn").click(function(){
     $('#myBtn').removeClass("fa-play-circle").addClass("fa-pause-circle");
     setTimeout(function() { $("#myBtn").css('opacity','0'); }, 600);
   } else {
-    vid.pause();
+    vid.play();
     $('#myBtn').removeClass("fa-pause-circle").addClass("fa-play-circle");
-    $('#myBtn').css('opacity','1')
+    $('#myBtn').css('opacity','0')
   }
 })
 
@@ -49,9 +49,9 @@ $("#myVideo").click(function(){
     $('#myBtn').removeClass("fa-play-circle").addClass("fa-pause-circle");
     setTimeout(function() { $("#myBtn").css('opacity','0'); }, 600);
   } else {
-    vid.pause();
+    vid.play();
     $('#myBtn').removeClass("fa-pause-circle").addClass("fa-play-circle");
-    $('#myBtn').css('opacity','1')
+    $('#myBtn').css('opacity','0')
   }
 })
 
@@ -68,9 +68,9 @@ $(".content").click(function(){
     $('#myBtn').removeClass("fa-play-circle").addClass("fa-pause-circle");
     setTimeout(function() { $("#myBtn").css('opacity','0'); }, 600);
   } else {
-    vid.pause();
+    vid.play();
     $('#myBtn').removeClass("fa-pause-circle").addClass("fa-play-circle");
-    $('#myBtn').css('opacity','1')
+    $('#myBtn').css('opacity','0')
   }
 })
 
