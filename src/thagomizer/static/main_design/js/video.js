@@ -211,27 +211,27 @@ $('#video-section').bind('mousewheel', function(e) {
 
 $('#part-two-section').bind('mousewheel', function(e) {
     if(e.originalEvent.wheelDelta / 120 > 0) {
-        $( ".one-button-click" ).trigger('click');
+        $( ".part-two-up" ).trigger('click');
         console.log('part two section up')
     }else {
-         $( ".three-button-click" ).trigger('click');    
+         $( ".part-two-down" ).trigger('click');    
          console.log('part two section down')
     }
 });
 
 $('#part-three-section').bind('mousewheel', function(e) {
     if(e.originalEvent.wheelDelta / 120 > 0) {
-        $( ".two-button-click" ).trigger('click');
+        $( ".part-three-up" ).trigger('click');
         console.log('part three section up')
     }else {
-         $( ".four-button-click" ).trigger('click');    
+         $( ".part-three-down" ).trigger('click');    
          console.log('part three section down')
     }
 });
 
 $('#footer-section').bind('mousewheel', function(e) {
     if(e.originalEvent.wheelDelta / 120 > 0) {
-        $( ".three-button-click" ).trigger('click');
+        $( ".part-four-up" ).trigger('click');
         console.log('part 4 section up')
     }else {
          $( ".four-button-click" ).trigger('click');    
