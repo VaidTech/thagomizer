@@ -187,7 +187,87 @@ $(window).scroll(function(){
 //Wow effect
   new WOW().init();
 
-/*var vids = $("video"); 
+
+/*$(".button-over-video-text").click(function(){
+
+      function noscroll() {
+        window.scrollTo( 0, 900 );
+      } 
+
+      window.addEventListener('scroll', noscroll);
+
+})*/
+
+
+$('#video-section').bind('mousewheel', function(e) {
+    if(e.originalEvent.wheelDelta / 120 > 0) {
+        // $( ".one-button-click" ).trigger('click');
+        console.log('video section up')
+    }else {
+         $( ".button-over-video-text" ).trigger('click');    
+         console.log('vidoe section donw')
+    }
+});
+
+$('#part-two-section').bind('mousewheel', function(e) {
+    if(e.originalEvent.wheelDelta / 120 > 0) {
+        $( ".one-button-click" ).trigger('click');
+        console.log('part two section up')
+    }else {
+         $( ".three-button-click" ).trigger('click');    
+         console.log('part two section down')
+    }
+});
+
+$('#part-three-section').bind('mousewheel', function(e) {
+    if(e.originalEvent.wheelDelta / 120 > 0) {
+        $( ".two-button-click" ).trigger('click');
+        console.log('part three section up')
+    }else {
+         $( ".four-button-click" ).trigger('click');    
+         console.log('part three section down')
+    }
+});
+
+$('#footer-section').bind('mousewheel', function(e) {
+    if(e.originalEvent.wheelDelta / 120 > 0) {
+        $( ".three-button-click" ).trigger('click');
+        console.log('part 4 section up')
+    }else {
+         $( ".four-button-click" ).trigger('click');    
+         // console.log('part 4 section down')
+    }
+});
+
+/*var lastScrollTop = 0;
+$(window).scroll(function(event){
+   var st = $(this).scrollTop();
+   if (st > lastScrollTop){
+      if($( window ).scrollTop() > 1 && $( window ).scrollTop() < 100){
+        console.log("1")
+        // $( ".button-over-video-text" ).trigger('click');
+      
+        }else if($( window ).scrollTop() > 801 && $( window ).scrollTop() < 900){ 
+            console.log("2")
+            $( ".two-button-click" ).click();
+
+         }else if($( window ).scrollTop() > 1400 && $( window ).scrollTop() < 1500){
+
+           console.log("3")
+           $( ".three-button-click" ).click();
+
+         }else if($( window ).scrollTop() > 2100 && $( window ).scrollTop() < 2200){
+            console.log("4")
+             $( ".four-button-click" ).click();$(window).unbind('scroll')
+        }
+   } else {
+       alert('up');
+   }
+   lastScrollTop = st;
+});*/
+
+
+/*var vids = $("video");
 //Loop though all Video tags and set Controls as false
 
 $("video").click(function() {
