@@ -222,38 +222,30 @@ function throttle(fn, threshhold, scope) {
 
 $('#video-section').on('mousewheel', throttle(function(e) {
     if(e.originalEvent.wheelDelta / 1 > 0) {
-        // $( ".one-button-click" ).trigger('click');
-        console.log('video section up')
     }else {
          $( ".button-over-video-text" ).trigger('click');    
-         console.log('vidoe section donw')
     }
 }));
 
 $('#part-two-section').bind('mousewheel', throttle(function(e) {
     if(e.originalEvent.wheelDelta / 1 > 0) {
         $( ".part-two-up" ).trigger('click');
-        console.log('part two section up')
     }else {
          $( ".part-two-down" ).trigger('click');    
-         console.log('part two section down')
     }
 }));
 
 $('#part-three-section').bind('mousewheel', throttle(function(e) {
     if(e.originalEvent.wheelDelta / 1 > 0) {
         $( ".part-three-up" ).trigger('click');
-        console.log('part three section up')
     }else {
          $( ".part-three-down" ).trigger('click');    
-         console.log('part three section down')
     }
 }));
 
 $('#footer-section').bind('mousewheel', throttle(function(e) {
     if(e.originalEvent.wheelDelta / 1 > 0) {
         $( ".part-four-up" ).trigger('click');
-        console.log('part 4 section up')
     }else {
             
          // console.log('part 4 section down')
