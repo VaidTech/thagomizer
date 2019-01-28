@@ -260,32 +260,42 @@ $('#footer-section').bind('mousewheel', throttle(function(e) {
     }
 }));
 
-/*var lastScrollTop = 0;
-$(window).scroll(function(event){
-   var st = $(this).scrollTop();
-   if (st > lastScrollTop){
-      if($( window ).scrollTop() > 1 && $( window ).scrollTop() < 100){
-        console.log("1")
-        // $( ".button-over-video-text" ).trigger('click');
-      
-        }else if($( window ).scrollTop() > 801 && $( window ).scrollTop() < 900){ 
-            console.log("2")
-            $( ".two-button-click" ).click();
 
-         }else if($( window ).scrollTop() > 1400 && $( window ).scrollTop() < 1500){
 
-           console.log("3")
-           $( ".three-button-click" ).click();
+var lastScrollTop = 0;
+$(window).on('scroll', throttle(function(){
 
-         }else if($( window ).scrollTop() > 2100 && $( window ).scrollTop() < 2200){
-            console.log("4")
-             $( ".four-button-click" ).click();$(window).unbind('scroll')
-        }
-   } else {
-       alert('up');
-   }
-   lastScrollTop = st;
-});*/
+     var st = $(this).scrollTop();
+     if (st > lastScrollTop){
+         // downscroll code
+
+         if($( window ).scrollTop() > 100 && $( window ).scrollTop() < 900){
+            console.log("section two")
+              $( ".button-over-video-text" ).trigger('click');
+           }else if($( window ).scrollTop() > 950 && $( window ).scrollTop() < 1600){ 
+               console.log("section three")
+               $( ".part-two-down" ).trigger('click');
+           }else if($( window ).scrollTop() > 1700 && $( window ).scrollTop() < 2000){
+               console.log("section four")
+               $( ".part-three-down" ).trigger('click');
+            }
+     } else {
+           if($( window ).scrollTop() > 600 && $( window ).scrollTop() < 800){ 
+               console.log("section one")
+               $( ".part-two-up" ).trigger('click');
+           }else if($( window ).scrollTop() > 1100 && $( window ).scrollTop() < 1600){
+               console.log("section two")
+               $( ".part-three-up" ).trigger('click');
+            }else if($( window ).scrollTop() > 2000 && $( window ).scrollTop() < 2200){
+              console.log("section three")
+              $( ".part-four-up" ).trigger('click');
+            }
+     }
+     lastScrollTop = st;
+}))
+
+
+
 
 
 /*var vids = $("video");
