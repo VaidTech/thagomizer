@@ -261,7 +261,7 @@ $('#footer-section').bind('mousewheel', throttle(function(e) {
 }));
 
 
-
+/*
 var lastScrollTop = 0;
 $(window).on('scroll', throttle(function(){
 
@@ -295,7 +295,7 @@ $(window).on('scroll', throttle(function(){
 }))
 
 
-
+*/
 
 
 /*var vids = $("video");
