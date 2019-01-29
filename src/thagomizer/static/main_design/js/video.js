@@ -220,6 +220,8 @@ function throttle(fn, threshhold, scope) {
   };
 }
 
+/*
+
 $('#video-section').on('mousewheel', throttle(function(e) {
     if(e.originalEvent.wheelDelta / 1 > 0) {
     }else {
@@ -251,7 +253,7 @@ $('#footer-section').bind('mousewheel', throttle(function(e) {
          // console.log('part 4 section down')
     }
 }));
-
+*/
 
 /*
 var lastScrollTop = 0;
