@@ -1170,6 +1170,11 @@ button.btn {
 div#show_img {
     margin-top: -14%;
     margin-left: 38%;
+    display: ;
+    position: absolute;
+    cursor: pointer;
+}
+.full_img_text{
     display: none;
 }
 div#lightbox{

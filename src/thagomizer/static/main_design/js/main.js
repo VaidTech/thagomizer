@@ -24,21 +24,19 @@ $(document).ready(function(){
      
     ///////////////click here
     $(".example-image").hover(function(){
-        $("#show_img").css('display','block');
-        $("div#big-boxes").css('padding-bottom','120px');
-        }, function(){
-        $("#show_img").css('display','none');
         $(".full_img_text").css('display','block');
-         $("div#big-boxes").css('padding-bottom','40px');
+        /*$("div#big-boxes").css('padding-bottom','120px');*/
+        }, function(){
+        $(".full_img_text").css('display','none');
+         /*$("div#big-boxes").css('padding-bottom','40px');*/
     });
 
-    $("#show_img").hover(function(){
+    $(".full_img_text").hover(function(){
         $(this).css('display','block');
-        $("div#big-boxes").css('padding-bottom','120px');
+        /*$("div#big-boxes").css('padding-bottom','120px');*/
         }, function(){
         $(this).css('display','none');
-        $(".full_img_text").css('display','block');
-         $("div#big-boxes").css('padding-bottom','40px');
+        /*$("div#big-boxes").css('padding-bottom','40px');*/
     });
 
 
@@ -71,9 +69,9 @@ $(document).ready(function(){
 
 
 
-    $(".full_img_text").hover(function(){
+   /* $(".full_img_text").hover(function(){
         $(this).css('display','none');
-        });
+        });*/
 
     //Wow effect
      new WOW().init();
