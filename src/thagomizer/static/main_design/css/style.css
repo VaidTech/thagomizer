@@ -1100,7 +1100,7 @@ div#team-img {
     background-color: #2e2e2e;
     width: 30%;
     margin-right: 1.5%;
-    margin-left: 1.5%;
+    margin-left: 1.73%;
     padding-bottom: 30px;
     padding-top: 30px;
     border-radius: 5px;
@@ -1129,7 +1129,44 @@ hr#team-member-line {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+img.example-image{
+    cursor: pointer;
+}
+.col-sm-12.wow.fadeIn.img-responsive {
+    margin-left: 23px;
+}
+button.btn {
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 20px !important;
+}
+#image-popup{
+    background-color: #484848a6;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 100000;
+    display: none;
+}
+.popup-image-class{
+    width: 100%;
+    margin-top: 1%;
 
+}
+.popup-close-here{
+    cursor: pointer;
+    line-height: 50px;
+    margin-top: 10%;
+    float: right;
+    font-size: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
 div#show_img {
     margin-top: -14%;
     margin-left: 38%;

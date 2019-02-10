@@ -16,7 +16,15 @@
     </style>
 
     <section id="top-sub-section">
-    </section><!--       Wallpaper Section     -->
+    </section><!--       Wallpaper Section   -->
+
+    <section id="image-popup">
+      <div class="image-pop-div">
+          <p class="popup-close-here">X</p>
+          <img src="{%  static 'main_design/img/logo1.png' %}" class="popup-image-class">
+
+      </div> 
+    </section>
 
     <section id="dashboard-section">
       <div class="container-fluid">
@@ -150,11 +158,9 @@
                     </div>
 
                 </div><!-- col-sm-4 -->
-                <div class="col-sm-12" id="big-boxes">
-                   <a target="_blank" class="example-image-link" href="" data-lightbox="example-1"/>                 
+                <div class="col-sm-12" id="big-boxes">               
                   <img class="example-image graph_result_img " src="" alt=""/>
-                  
-                  </a>
+
                   <div id="show_img">
                        <p class="full_img_text" alt="image-1">Click For Full Image</p>
                   </div>
@@ -252,7 +258,7 @@
               </div><!-- col-sm-3 --> 
               <div class="col-sm-12" id="small-boxes">
 
-                  <a target="_blank" class="example-image-link" href="" data-lightbox="example-1"/>                 
+                  <a class="example-image-link" href="" data-lightbox="example-1"/>                 
                     <img class="example-image graph_result_img " src="" alt=""/>
                   </a>
                   <div id="show_img">
@@ -295,10 +301,10 @@
 
       $('.graphing_dashboard_menu').addClass('active-page')
       //to add the extra li(can't write on base.html because this li is only for this file)
-      code_web = '<li id="menu-list-name"><a href="https://github.com/sskhon-2014/Graphy">Source Code</a></li>'
+      /*code_web = '<li id="menu-list-name"><a href="https://github.com/sskhon-2014/Graphy">Source Code</a></li>'
       code_mobile = '<a href="https://github.com/sskhon-2014/Graphy"><li id="mobile-menu-list-name" class="home_menu">Source Code</li></a>'
       $('#menu-list li:nth-child(2)').after(code_web);
-      $('#mobile-menu-list a:nth-child(2)').after(code_mobile);
+      $('#mobile-menu-list a:nth-child(2)').after(code_mobile);*/
 
       
       $('.graph_result_img').hide()

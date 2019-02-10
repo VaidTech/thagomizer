@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{%  static 'main_design/css/style.css' %}?v=2.8" />
+    <link rel="stylesheet" type="text/css" href="{%  static 'main_design/css/style.css' %}?v=2.9" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
     <link rel="stylesheet" href="{%  static 'main_design/css/fluid-gallery.css' %}">
@@ -46,6 +46,7 @@
                   	  <!-- <li id="menu-list-name"><a href="{% url 'main_project:graphing_dashboard' %}" class="graphing_dashboard_menu">Plot GCLiPP</a></li>
                        -->
                        <li id="menu-list-name"><a href="{% url 'main_project:choose_bam_file' %}" class="graphing_dashboard_menu">Plot CLiP</a></li>
+                       <li id="menu-list-name"><a href="https://github.com/sskhon-2014/Graphy">Source Code</a></li>
                   	  <li id="menu-list-name"><a href="{% url 'main_project:team' %}" class="team_menu"_menu>Team Page</a></li>
                   	  <li id="menu-list-name"><a href="{% url 'main_project:report' %}" class="report_menu">Report Bugs</a></li>
                   </ul>
@@ -62,6 +63,7 @@
     	<ul id="mobile-menu-list">
             <a href="{% url 'main_project:home' %}"><li id="mobile-menu-list-name" class="home_menu ">Home</li></a>
             <a href="{% url 'main_project:graphing_dashboard' %}"><li id="mobile-menu-list-name" class="graphing_dashboard_menu">Plot CLiP</li></a>
+            <a href="https://github.com/sskhon-2014/Graphy"><li id="mobile-menu-list-name" class="team_menu">Source Code</li></a>
             <a href="{% url 'main_project:team' %}"><li id="mobile-menu-list-name" class="team_menu">Team Page</li></a>
             <a href="{% url 'main_project:report' %}"><li id="mobile-menu-list-name" class="report_menu">Report Bugs</li></a>
         </ul>
