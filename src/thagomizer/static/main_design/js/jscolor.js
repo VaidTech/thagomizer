@@ -1,4 +1,4 @@
-* jscolor - JavaScript Color Picker   
+  /* jscolor - JavaScript Color Picker   
   *   
   * @link    http://jscolor.com   
   * @license For open source use: GPLv3   
