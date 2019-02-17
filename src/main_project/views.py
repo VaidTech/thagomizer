@@ -94,6 +94,8 @@ def graphing_dashboard(request):
 		return sorted(f[1:])
 
 	options_list = get_target_scan(file_targetscan)
+
+	# print(options_list)
 	
 	context = {
 		'genome': genome,
@@ -173,6 +175,7 @@ def graphy(request):
 
 # 	    ############# Constant Values #############
 
+		# print('name is', name)
 
 		plot_value = plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
 		   					colors,shade,limits,bedtrack,start,stop,staggerbed,bigwignames,
@@ -257,7 +260,9 @@ def graphy(request):
 		return {
 			'bam_files': bam_files,
 			'image_url': outputsuffix,
-			'graph_data': real_value
+			'graph_data': real_value,
+			'label_data': plot_value['label_data'],
+			'first_dict_val': first_dict_val 	#for converting date to number in labeling need to use in js
 		}
 			
 

@@ -324,6 +324,8 @@
 
               bam_files = data.bam_files
               graph_data = data.graph_data
+              label_data = data.label_data
+              first_dict_val = data.first_dict_val
               data = '/'+data.image_url
               
               if (data == "error"){
@@ -332,7 +334,7 @@
                 $('.graph_result_gif').hide()
               }else{
 
-                get_graph(graph_data, bam_files)
+                get_graph(graph_data, bam_files, label_data, first_dict_val)
 
 
   	             $('.graph_result_img').attr("src", '')  //cause sometime img's new src sit on it place later but show before, so for 1/2 sec it shows the previous image so we are hiding previous img. (Only if server is slow)
@@ -363,11 +365,7 @@
 
 
 
-
-
-
-
-var get_graph = function(data, bam_files){
+var get_graph = function(data, bam_files, label_data, first_dict_val){
     // console.log(val)
         
     am4core.useTheme(am4themes_material);
@@ -419,6 +417,7 @@ var get_graph = function(data, bam_files){
     //   "bicycles": 71
     // }];
 
+
     chart.data = data
     // console.log(data)
 
@@ -465,26 +464,73 @@ var get_graph = function(data, bam_files){
         series.stacked = true;
 
 
-
-
-        // axis ranges
-        var range = dateAxis.axisRanges.create();
-        range.date = new Date(2001, 1, 1);
-        range.endDate = new Date(2003, 1, 1);
-        range.axisFill.fill = chart.colors.getIndex(7);
-        range.axisFill.fillOpacity = 0.2;
-
-        range.label.text = val;
-        range.label.inside = true;
-        range.label.rotation = 90;
-        range.label.horizontalCenter = "right";
-        range.label.verticalCenter = "middle";
-
+      // console.log(label_data['start'][ind])
 
 
 
 
     })
+
+
+    // first_dict_val
+    // str((val+100)-first_dict_val)
+    
+    // axis ranges
+
+    // could also use label_data['stop'] as need to loop just 
+    // for single_label_data in label_data['start']:
+    if (typeof(label_data) !='undefined'){
+      // $(label_data['start'][0]).map(function(val, ind){
+        
+      Object.keys(label_data['start']).map(function(key, index) {
+
+          // console.log( label_data['start'][key] )
+
+          var range = dateAxis.axisRanges.create();
+
+          // range.date = String( (label_data['start'][key]+100)- first_dict_val )
+          range.date = new Date((label_data['start'][key]+1000), 1, 1);
+          // console.log("String( (label_data['start'][key]+100)- first_dict_val )", String( (label_data['start'][key]+100)- first_dict_val ))
+          // console.log(String( (label_data['start'][key]+1000)))
+
+          // range.endDate = String( (label_data['stop'][key]+100)- first_dict_val )
+          range.endDate = new Date((label_data['stop'][key]+1000), 1, 1);
+          // console.log("String( (label_data['stop'][key]+100)- first_dict_val )", String( (label_data['stop'][key]+100)- first_dict_val ))
+          // console.log(String( (label_data['stop'][key]+1000)))
+          
+
+          // range.axisFill.fill = label_data['fill'][key];
+          range.axisFill.fill = chart.colors.getIndex(7);
+
+
+          range.axisFill.fillOpacity = label_data['fillOpacity'][key];
+          range.label.text = label_data['Text'][key];
+          range.label.inside = label_data['inside'][key];
+          range.label.rotation = label_data['rotation'][key];
+          range.label.horizontalCenter = label_data['horizontalCenter'][key];
+          range.label.verticalCenter = label_data['verticalCenter'][key];
+
+
+        
+      });
+    }        
+
+    // var range = dateAxis.axisRanges.create();
+    // range.date = new Date(2001, 1, 1);
+    // range.endDate = new Date(2003, 1, 1);
+    // range.axisFill.fill = chart.colors.getIndex(1);
+    // range.axisFill.fillOpacity = 0.2;
+
+    // range.label.text = 'testing';
+    // range.label.inside = true;
+    // range.label.rotation = 90;
+    // range.label.horizontalCenter = "right";
+    // range.label.verticalCenter = "middle";
+    
+
+
+
+
    
     // var series2 = chart.series.push(new am4charts.LineSeries());
     // series2.name = "motorcycles";

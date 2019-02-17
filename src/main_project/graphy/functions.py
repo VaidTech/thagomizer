@@ -27,6 +27,7 @@ import seaborn as sns
 
 
 path_to_static = settings.PATH_TO_STATIC + '/graphy_static/'
+path_to_icons = settings.PATH_TO_STATIC + '/graphy_static/' + 'icons/'
 file_refseq = path_to_static + "Genome_Data/refseq_names.txt"
 
 from IPython.display import Markdown, display
@@ -47,19 +48,19 @@ def label_builder(df, start, stop, image, rows):
         rise_factor = 1575
     if rows ==1:
         rise_factor = 1075
-    [image.paste(Image.open("icons/1-1.png"), (int(i), (image.size[1] - rise_factor + 21)), Image.open("icons/1-1.png")) for i in df["pix"]]
+    [image.paste(Image.open(path_to_icons + "1-1.png"), (int(i), (image.size[1] - rise_factor + 21)), Image.open(path_to_icons + "1-1.png")) for i in df["pix"]]
     for i in range(len(df["name"])):
         name = df["name"][i]
         if len(name) > 13:
             font_size = 80
         else:
             font_size = 100
-        img = Image.open("icons/label-red.png")
+        img = Image.open(path_to_icons + "label-red.png")
         draw = ImageDraw.Draw(img)
         d = ImageDraw.Draw(img)
-        w, h = draw.textsize(name, font=ImageFont.truetype('Apple Symbols.ttf', font_size))
+        w, h = draw.textsize(name, font=ImageFont.truetype(path_to_icons + 'Apple Symbols.ttf', font_size))
         W,H = img.size
-        d.text(((W-w)/2,(H-h)/2), name, font=ImageFont.truetype('Apple Symbols.ttf', font_size), fill=(0, 0, 0))
+        d.text(((W-w)/2,(H-h)/2), name, font=ImageFont.truetype(path_to_icons + 'Apple Symbols.ttf', font_size), fill=(0, 0, 0))
         position = df["pix"][i]
         image.paste(img, (int(position -150), (image.size[1] - (rise_factor - 650))), img)
 
@@ -275,6 +276,7 @@ def graph_bed(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagg
         else:
             beddb_regions = beddb_local[beddb_local.miRNA==name]
         target_scan = pd.DataFrame({'name':list(beddb_regions.miRNA), 'start':list([i - start for i in beddb_regions.start]), 'stop':list([i - start for i in beddb_regions.stop])})
+        
         return target_scan
 
 
@@ -600,8 +602,27 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
         image = resize("%s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat), rows)
         image = label_builder(target_scan, start, stop,image, rows)
         image.save("%s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat))
+    ######################
+    
+        label_data = pd.DataFrame({'start':target_scan["start"], 'stop':target_scan["stop"], 'fill':[12 for i in target_scan["start"]], "fillOpacity":[0.8 for i in target_scan["start"]], 'Text':target_scan["name"], 'inside':["true" for i in target_scan["start"]], 'rotation':[90 for i in target_scan["start"]], 'horizontalCenter':["right" for i in target_scan["start"]], 'verticalCenter':["bottom" for i in target_scan["start"]]})
+        
+        ###################### This is the variable that contains the data: label_data. Convert it to a dict with .to_dict() if needed because it is currently a dataframe.
 
-    return depths.to_dict()
+    for i in range(len(track_names)):
+        if i == 0:
+            first = sum(depths[track_names[i]])
+        if i != 0:
+            coefficent_equalize = first/sum(depths[track_names[i]])
+            depths[track_names[i]] = (coefficent_equalize * depths[track_names[i]])
+
+    depths = depths.to_dict()
+
+    if target:
+        depths['label_data'] = label_data.to_dict()
+    
+    print("depths['label_data']", depths['label_data'])
+
+    return depths
     # print(fig)
     # return fig
 
