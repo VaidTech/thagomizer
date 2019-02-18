@@ -261,7 +261,7 @@ def graphy(request):
 			'bam_files': bam_files,
 			'image_url': outputsuffix,
 			'graph_data': real_value,
-			'label_data': plot_value['label_data'],
+			'label_data': plot_value.get('label_data', {}),
 			'first_dict_val': first_dict_val 	#for converting date to number in labeling need to use in js
 		}
 			

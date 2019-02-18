@@ -619,8 +619,11 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
 
     if target:
         depths['label_data'] = label_data.to_dict()
+    else:
+        depths['label_data'] = {}
+
     
-    print("depths['label_data']", depths['label_data'])
+    # print("depths['label_data']", depths['label_data'])
 
     return depths
     # print(fig)

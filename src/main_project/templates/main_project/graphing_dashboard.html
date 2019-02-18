@@ -448,11 +448,12 @@ var get_graph = function(data, bam_files, label_data, first_dict_val){
     // bam_files = ['GCliPP_everything.bam', 'miR29_WT_Th17.bam']
     // bam_files = ['cars', 'motorcycles', 'bicycles']
     $.each(bam_files, function(ind, val){
-        
+        console.log('val', val)
         var series = chart.series.push(new am4charts.LineSeries());
         series.name = val;
         series.dataFields.dateX = "year";
         series.dataFields.valueY =  val;
+        series.tooltipHTML = "<span style='font-size:14px; color:#000000;'><b>"+val+" {valueY.value}</b></span>";
         // series.tooltipHTML = "<img src='https://www.amcharts.com/lib/3/images/car.png' style='vertical-align:bottom; margin-right: 10px; width:28px; height:21px;'><span style='font-size:14px; color:#000000;'><b>{valueY.value}</b></span>";
         series.tooltip.background.fill = am4core.color("#FFF");
         series.tooltip.getStrokeFromObject = true;
@@ -472,6 +473,15 @@ var get_graph = function(data, bam_files, label_data, first_dict_val){
     })
 
 
+    function isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
+
+
     // first_dict_val
     // str((val+100)-first_dict_val)
     
@@ -479,40 +489,44 @@ var get_graph = function(data, bam_files, label_data, first_dict_val){
 
     // could also use label_data['stop'] as need to loop just 
     // for single_label_data in label_data['start']:
-    if (typeof(label_data) !='undefined'){
-      // $(label_data['start'][0]).map(function(val, ind){
-        
-      Object.keys(label_data['start']).map(function(key, index) {
+    if (typeof(label_data) != 'undefined'){
+      if (!isEmpty(label_data)){
+      
+        // console.log(label_data != {})
+        // console.log(typeof(label_data))
+        // console.log(typeof({}))
+        // console.log(typeof(label_data) !='undefined', label_data)
+      
+          Object.keys(label_data['start']).map(function(key, index) {
 
-          // console.log( label_data['start'][key] )
+              // console.log( label_data['start'][key] )
 
-          var range = dateAxis.axisRanges.create();
+              var range = dateAxis.axisRanges.create();
 
-          // range.date = String( (label_data['start'][key]+100)- first_dict_val )
-          range.date = new Date((label_data['start'][key]), 1, 1);
-          // console.log("String( (label_data['start'][key]+100)- first_dict_val )", String( (label_data['start'][key]+100)- first_dict_val ))
-          // console.log(String( (label_data['start'][key]+1000)))
+              // range.date = String( (label_data['start'][key]+100)- first_dict_val )
+              range.date = new Date((label_data['start'][key]), 1, 1);
+              // console.log("String( (label_data['start'][key]+100)- first_dict_val )", String( (label_data['start'][key]+100)- first_dict_val ))
+              // console.log(String( (label_data['start'][key]+1000)))
 
-          // range.endDate = String( (label_data['stop'][key]+100)- first_dict_val )
-          range.endDate = new Date((label_data['stop'][key]), 1, 1);
-          // console.log("String( (label_data['stop'][key]+100)- first_dict_val )", String( (label_data['stop'][key]+100)- first_dict_val ))
-          // console.log(String( (label_data['stop'][key]+1000)))
-          
+              // range.endDate = String( (label_data['stop'][key]+100)- first_dict_val )
+              range.endDate = new Date((label_data['stop'][key]), 1, 1);
+              // console.log("String( (label_data['stop'][key]+100)- first_dict_val )", String( (label_data['stop'][key]+100)- first_dict_val ))
+              // console.log(String( (label_data['stop'][key]+1000)))
+              
 
-          // range.axisFill.fill = label_data['fill'][key];
-          range.axisFill.fill = chart.colors.getIndex(7);
-
-
-          range.axisFill.fillOpacity = label_data['fillOpacity'][key];
-          range.label.text = label_data['Text'][key];
-          range.label.inside = label_data['inside'][key];
-          range.label.rotation = label_data['rotation'][key];
-          range.label.horizontalCenter = label_data['horizontalCenter'][key];
-          range.label.verticalCenter = label_data['verticalCenter'][key];
+              // range.axisFill.fill = label_data['fill'][key];
+              range.axisFill.fill = chart.colors.getIndex(7);
 
 
-        
-      });
+              range.axisFill.fillOpacity = label_data['fillOpacity'][key];
+              range.label.text = label_data['Text'][key];
+              range.label.inside = label_data['inside'][key];
+              range.label.rotation = label_data['rotation'][key];
+              range.label.horizontalCenter = label_data['horizontalCenter'][key];
+              range.label.verticalCenter = label_data['verticalCenter'][key];
+
+          });
+      }
     }        
 
     // var range = dateAxis.axisRanges.create();
