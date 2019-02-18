@@ -489,12 +489,12 @@ var get_graph = function(data, bam_files, label_data, first_dict_val){
           var range = dateAxis.axisRanges.create();
 
           // range.date = String( (label_data['start'][key]+100)- first_dict_val )
-          range.date = new Date((label_data['start'][key]+1000), 1, 1);
+          range.date = new Date((label_data['start'][key]), 1, 1);
           // console.log("String( (label_data['start'][key]+100)- first_dict_val )", String( (label_data['start'][key]+100)- first_dict_val ))
           // console.log(String( (label_data['start'][key]+1000)))
 
           // range.endDate = String( (label_data['stop'][key]+100)- first_dict_val )
-          range.endDate = new Date((label_data['stop'][key]+1000), 1, 1);
+          range.endDate = new Date((label_data['stop'][key]), 1, 1);
           // console.log("String( (label_data['stop'][key]+100)- first_dict_val )", String( (label_data['stop'][key]+100)- first_dict_val ))
           // console.log(String( (label_data['stop'][key]+1000)))
           
