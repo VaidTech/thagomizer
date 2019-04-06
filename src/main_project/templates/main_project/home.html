@@ -23,10 +23,18 @@
           <p class="video-introducing video-play-with wow fadeIn" data-wow-duration="1.1s" data-wow-delay="1s">Introducing</p>
           <img class="video-img-logo video-play-with wow fadeIn" data-wow-duration="0s" data-wow-delay="2s" src="{%  static 'main_design/img/logo1.png' %}">
           <p class="video-des video-play-with wow fadeIn" data-wow-duration="0s" data-wow-delay="3s">A New Way to Share and Access High Throughput Sequencing Data</p>
-          <a class="button-over-video-text" href="#part-two-section-click">Science Behind Thagomizer</a>
+          <div class="col-sm-12 the-two-button">
+              <div class="col-sm-6">
+                  <a class="button-over-video-text" href="#part-two-section-click">Science Behind Thagomizer</a>
+              </div>
+              <div class="col-sm-6">
+                  <a class="button-over-video-text1" href="{% url 'main_project:choose_bam_file' %}">Plot CLIP</a>
+              </div>  
+          </div>  
+          
     </div>
      <div>
-        <video  muted loop autoplay src="https://github.com/sheikhsalman08/thagomizer/blob/master/src/thagomizer/static/main_design/video/video.mp4?raw=true" id="myVideo">
+        <video  muted loop autoplay src="https://github.com/sskhon-2014/Thagomizer/blob/master/video.mp4?raw=true" id="myVideo">
         </video>
       </div>  
 

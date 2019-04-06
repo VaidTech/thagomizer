@@ -14,13 +14,15 @@ import sys
 import os
 import spectra
 from io import StringIO
-# import clip_tools as ct
 
 from django.contrib.staticfiles.storage import staticfiles_storage
 import main_project.graphy.clip_tools as ct
 from django.conf import settings
 from io import BytesIO
 import pysam
+from datascience import *
+
+
 
 
 path_to_static = settings.PATH_TO_STATIC + '/graphy_static/'
@@ -30,7 +32,9 @@ from IPython.display import Markdown, display
 def printmd(string):
     display(Markdown(string))
     
-def graphRefseq(refseqid,
+
+def graphRefseq(genome_interest,
+                refseqid,
                 xlim=False,
                 strand=False,
                 file_refseq=file_refseq,
@@ -54,12 +58,17 @@ def graphRefseq(refseqid,
     if refseqid=="None":
         plt.plot()
         return
+    
 
     ## First Setup the plot
     
     yvals = [ylocation,ylocation]
     if not refseqid=="None":
-        refdb = pd.read_table(file_refseq,delimiter="\t",index_col=0,dtype="str")
+        hg19reftrack_file = path_to_static+'Genome_Data/hg38.txt'
+        if genome_interest == "hg19":
+            refdb = pd.read_table(hg19reftrack_file,delimiter="\t",index_col=0,dtype="str")
+        if genome_interest == "mm10":
+            refdb = pd.read_table(file_refseq,delimiter="\t",index_col=0,dtype="str")
         gene = refdb.loc[str(refseqid)]
         txStart = int(gene.txStart)
         txEnd = int(gene.txEnd)
@@ -72,7 +81,6 @@ def graphRefseq(refseqid,
 
 
     
-
 
 
     # Otherwise, lookup the gene and start annotating
@@ -175,8 +183,48 @@ def graphRefseq(refseqid,
 
 
 
+def graph_bed_df(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagger = False):
+    '''
+        Graphs region tracks across a defined region
+        
+        Parameters
+        ----------
+        bedfile: File (bed formatted)
+        bedtype: string
+        Based on kind of format of bed:
+        targetscan: "chrom","start","stop","miRNA","score","s2","st2","color"
+        custom: "chrom","start","stop","miRNA","zero","strand","geneid","extra"
+        bed: "chrom","start","stop","geneid","zero","strand"
+        name: str
+        chrom: str
+        start: int
+        stop: int
+        strand: int
+        stagger: Bool
+        Set true if you have a lot of overlapping regions and want them separated.
+        
+        '''
+    
+    if bedtype=="targetscan":
+        if genome_interest=="hg19":
+            bedfile = path_to_static + "Genome_Data/TargetScanHg38.bed"
+        beddb = pd.read_table(bedfile, header=None)
+        if len(beddb.columns==9):
+            beddb.columns=["chrom","start","stop","miRNA","score","strand","start2","stop2","color"]
+        else:
+            beddb = beddb[0,1,2,3]
+            beddb.columns = ["chrom","start","stop","miRNA"]
+        beddb_chrom = beddb[beddb.chrom==chrom]
+        beddb_local = beddb_chrom[[(beddb_chrom.loc[i].start > start) and (beddb_chrom.loc[i].stop < stop) for i in beddb_chrom.index ]]
+        if name == "Targetscan":
+            beddb_regions = beddb_local
+        else:
+            beddb_regions = beddb_local[beddb_local.miRNA==name]
+        target_scan = pd.DataFrame({'name':list(beddb_regions.miRNA), 'start':list([i - start for i in beddb_regions.start]), 'stop':list([i - start for i in beddb_regions.stop])})
+        ### Line that controls the coordinate system of the TargetScan labels
+        return target_scan
 
-def graph_bed(bedfile,bedtype,name,chrom,start,stop,strand,stagger = False):
+def graph_bed(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagger = False):
     ''' 
     Graphs region tracks across a defined region
 
@@ -199,6 +247,8 @@ def graph_bed(bedfile,bedtype,name,chrom,start,stop,strand,stagger = False):
     '''
 
     if bedtype=="targetscan":
+        if genome_interest=="hg19":
+            bedfile = path_to_static + "Genome_Data/TargetScanHg38.bed"
         beddb = pd.read_table(bedfile, header=None)
         if len(beddb.columns==9):
             beddb.columns=["chrom","start","stop","miRNA","score","strand","start2","stop2","color"]
@@ -418,11 +468,13 @@ def darken(hexstr, scalefactor):
     return "#%02x%02x%02x" % (r, g, b)
 
 
+
+
 def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
        colors,shade,limits,bedtrack,start,stop,staggerbed,bigwignames,
         wig_df_list,shade_by_bed,output_folder,geneid,outputsuffix,outputformat,dpi,track_names,axis_off,
        legend,staticaxes,bedfile,bedtype,name,chrom,refseqid,annotate_bed,fontsize):
-
+    genome_interest = track_names[0].split('/')[0]
     ###### RUN TO PLOT! ######
     track_names = [element.split("/")[1] for element in track_names]
 
@@ -460,6 +512,8 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
 
     cur_axes = plt.gca()
 
+
+
     ymax = max(depths.max())
     # Build RNAseq Tracks
     cur_axes_rna = []
@@ -486,7 +540,7 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
     # Build Bedtracks
     if bedtrack:
         plt.subplot(gs[next(plotnumber)])
-        bedregions,bedlabels =graph_bed(bedfile,bedtype,name,chrom,start,stop,strand,stagger=staggerbed)
+        bedregions,bedlabels =graph_bed(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagger=staggerbed)
         cur_axes = plt.gca()
         cur_axes.axes.get_xaxis().set_visible(False)
         cur_axes.axes.get_yaxis().set_ticks([])
@@ -524,7 +578,7 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
     # Build Refseq Track
     if refseqtrack:
         plt.subplot(gs[next(plotnumber)])
-        graphRefseq(refseqid,
+        graphRefseq(genome_interest,refseqid,
             xlim=limits,
             strand=strand,
             LeftToRight=LeftToRight)
@@ -573,14 +627,103 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
                         arrowprops = dict(arrowstyle = '-', connectionstyle = 'arc3,rad=0')
                         )
    
-        #plt.gca().invert_xaxis()
+    #plt.gca().invert_xaxis()
+    #plt.rcParams['axes.facecolor'] = "#dbffe3"
     plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=0.2)
-    plt.savefig("%s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat),
-                format=outputformat,
-                bbox_inches='tight',
-                dpi =dpi)
 
-    return fig
+    plt.savefig("%s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat),
+            format=outputformat,
+            bbox_inches='tight',
+            dpi =dpi)
+    
+    # Scale the values on the y axis
+    #depths.to_csv("out.csv")
+
+    read_data = Table().with_columns("Depths", depths[track_names[0]].tolist())
+    def percentile25(arr):
+        return percentile(70, arr)
+    def bootstrap_estimates(num_replications):
+        results = make_array()
+        for i in np.arange(num_replications):
+            results = np.append(results, percentile25(test.sample().column("difference")))
+        
+        return results
+    read_data = read_data.with_columns("difference", np.append(np.diff(read_data.column("Depths")), 0), "index", np.arange(len(read_data.column("Depths")))+1100)
+    mylist = read_data.column("Depths")
+    N = 6
+    cumsum, moving_aves = [0], []
+    for i, x in enumerate(mylist, 1):
+        cumsum.append(cumsum[i-1] + x)
+        if i>=N:
+            moving_ave = (cumsum[i] - cumsum[i-N])/N
+            #can do stuff with moving_ave here
+            moving_aves.append(moving_ave)
+    test = Table().with_columns("ave val", np.append(moving_aves, np.ones(5)-1), "index", read_data.column("index"), "Depths", read_data.column("Depths")).take(np.arange(read_data.num_rows-6))
+    test = test.with_columns("difference", np.abs(np.append(np.diff(test.column("ave val")), 0)))
+    test = test.with_columns("difference 2", np.abs(np.append(np.diff(test.column("difference")), 0)))
+    test = test.take(np.arange(test.num_rows-1))
+    stable_regions = test.where("difference", are.below(np.mean(bootstrap_estimates(10000)))).column("index")
+
+    diff_annotations = np.append(1, np.diff(stable_regions))
+
+    combined_table = Table().with_columns("regions", stable_regions,"diff",diff_annotations == np.ones(len(diff_annotations)))
+    val = "str "
+    arrat = make_array()
+    diff_vals = combined_table.column("diff")
+    for i in np.arange(combined_table.num_rows):
+        if diff_vals.item(i) == True:
+            arrat = np.append(arrat, val)
+        if diff_vals.item(i) == False:
+            arrat = np.append(arrat, "0")
+            val = val + str(1)
+    combined_table = combined_table.with_columns("Analysis", arrat)#.group("Analysis").show()
+    combined_table = combined_table.group("Analysis", min).with_columns("regions max", combined_table.group("Analysis", max).column("regions max")).drop("diff min")
+    combined_table = combined_table.take(np.arange(1, combined_table.num_rows))
+    def bootstrap_estimates2(num_replications):
+        results = make_array()
+        for i in np.arange(num_replications):
+            results = np.append(results, np.mean(combined_table.sample().column("reads")))
+
+        return results
+    array_depths = make_array()
+    for i in np.arange(combined_table.num_rows):
+        array_depths = np.append(array_depths, np.mean(test.where("index", are.between(combined_table.column("regions min").item(i), combined_table.column("regions max").item(i)+1)).column("ave val")))
+    combined_table = combined_table.with_columns("reads", array_depths)
+    combined_table = combined_table.where("reads", are.above(percentile(50,bootstrap_estimates2(1000))))
+    combined_table = combined_table.with_columns("diff", combined_table.column("regions max") - combined_table.column("regions min"))
+    combined_table = combined_table.where("diff", are.above(2))
+
+
+
+    start_1 = combined_table.column("regions min")
+    stop_1 = combined_table.column("regions max")
+
+    #depths.to_csv("out.csv")
+    #for i in range(len(track_names)):
+    #max_val = max(depths[track_names[i]])
+    #depths[track_names[i]] = [(x/max_val) for x in depths[track_names[i]]]
+            
+    if bedtype == "targetscan":
+        target_scan = graph_bed_df(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagger=staggerbed)
+        np_arange_value = len(start_1)
+        X_factor = np.append(start_1, [1100 + i for i in target_scan["start"]])
+        target_scan["start"] = [1100 + i for i in target_scan["start"]]
+        target_scan["stop"] = [1100 + i for i in target_scan["stop"]]
+        label_data = pd.DataFrame({'start':np.append(start_1,target_scan["start"]), 'stop':np.append(stop_1, target_scan["stop"]), 'fill':np.append([28 for i in np.arange(np_arange_value)], [12 for i in target_scan["start"]]), "fillOpacity":[0.6 for i in X_factor], 'Text':np.append(["Peak" for i in np.arange(np_arange_value)], target_scan["name"]), 'inside':["true" for i in X_factor], 'rotation':[90 for i in X_factor], 'horizontalCenter':["right" for i in X_factor], 'verticalCenter':["bottom" for i in X_factor]})
+        print(label_data)
+        depths = depths.to_dict()
+        depths['label_data'] = label_data.to_dict()
+    else:
+        depths = depths.to_dict()
+        depths['label_data'] = {}
+
+    
+    
+
+    return depths
+
+
+    
 
 
 
@@ -597,3 +740,4 @@ def loc_by_refseqid(refseqid):
     df_refseq_3utr = df_refseq_3utr.set_index("name")
     chrom,start,stop,value,strand = df_refseq_3utr.loc[refseqid]
     return chrom,start,stop,strand
+

@@ -15,75 +15,21 @@ import os
 import spectra
 from io import StringIO
 # import clip_tools as ct
-import sys
-from PIL import Image,ImageDraw, ImageFont
 
 from django.contrib.staticfiles.storage import staticfiles_storage
 import main_project.graphy.clip_tools as ct
 from django.conf import settings
 from io import BytesIO
 import pysam
-import seaborn as sns
 
 
 path_to_static = settings.PATH_TO_STATIC + '/graphy_static/'
-path_to_icons = settings.PATH_TO_STATIC + '/graphy_static/' + 'icons/'
 file_refseq = path_to_static + "Genome_Data/refseq_names.txt"
 
 from IPython.display import Markdown, display
 def printmd(string):
     display(Markdown(string))
-
-def label_builder(df, start, stop, image, rows):
-    x = pd.Series([i/(stop-start) for i in [i/2 for i in [df.start + df.stop]]])#, index=df.index)
-    df["pos"] = list(x)[0]
-    def pixel_convert(percentage):
-        right_margin = 270
-        total_bar = 10184
-        return ((percentage*total_bar) + right_margin)
-    df["pix"] = [pixel_convert(i) for i in df.pos]
-    if rows ==3:
-        rise_factor = 2075
-    if rows ==2:
-        rise_factor = 1575
-    if rows ==1:
-        rise_factor = 1075
-    [image.paste(Image.open(path_to_icons + "1-1.png"), (int(i), (image.size[1] - rise_factor + 21)), Image.open(path_to_icons + "1-1.png")) for i in df["pix"]]
-    for i in range(len(df["name"])):
-        name = df["name"][i]
-        if len(name) > 13:
-            font_size = 80
-        else:
-            font_size = 100
-        img = Image.open(path_to_icons + "label-red.png")
-        draw = ImageDraw.Draw(img)
-        d = ImageDraw.Draw(img)
-        w, h = draw.textsize(name, font=ImageFont.truetype(path_to_icons + 'Apple Symbols.ttf', font_size))
-        W,H = img.size
-        d.text(((W-w)/2,(H-h)/2), name, font=ImageFont.truetype(path_to_icons + 'Apple Symbols.ttf', font_size), fill=(0, 0, 0))
-        position = df["pix"][i]
-        image.paste(img, (int(position -150), (image.size[1] - (rise_factor - 650))), img)
-
-    return image
-
-def resize(input_image, size):
-    if size==1:
-        size = 3100
-    if size==2:
-        size = 3600
-    if size==3:
-        size = 4100
-    mimage = Image.new('RGB', (10486, size), color = (255,255,255))
-    limage = Image.open(input_image).resize((10486, 2611))
-
-    simage = limage
-    mbox = mimage.getbbox()
-    sbox = simage.getbbox()
     
-
-    box = (0, 0)
-    mimage.paste(simage, box)
-    return mimage
 
 def graphRefseq(genome_interest,
                 refseqid,
@@ -275,9 +221,31 @@ def graph_bed(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagg
             beddb_regions = beddb_local
         else:
             beddb_regions = beddb_local[beddb_local.miRNA==name]
-        target_scan = pd.DataFrame({'name':list(beddb_regions.miRNA), 'start':list([i - start for i in beddb_regions.start]), 'stop':list([i - start for i in beddb_regions.stop])})
-        
-        return target_scan
+        labels = beddb_regions.miRNA
+    if bedtype=="custom":
+        beddb = pd.read_table(bedfile,names=["chrom","start","stop","miRNA","zero","strand","geneid","extra"])
+        beddb_chrom = beddb[beddb.chrom==chrom]
+        beddb_local = beddb_chrom[[(beddb_chrom.loc[i].start > start) and (beddb_chrom.loc[i].stop < stop) for i in beddb_chrom.index ]]
+        beddb_regions = beddb_local
+        labels = beddb_regions.miRNA
+    if bedtype=="bed":
+        beddb = pd.read_table(bedfile, header=None,names =["chrom","start","stop","geneid","zero","strand"],usecols=[0,1,2,3,4,5])
+        beddb_chrom = beddb[beddb.chrom==chrom]
+        beddb_chrom = beddb[beddb.strand==strand]
+        beddb_local = beddb_chrom[[(beddb_chrom.loc[i].start > start) and (beddb_chrom.loc[i].stop < stop) for i in beddb_chrom.index ]]
+        beddb_regions = beddb_local
+        labels = beddb_regions.geneid
+    regions = [[beddb_regions.loc[i].start,beddb_regions.loc[i].stop] for i in beddb_regions.index]
+    regions = sorted(regions,key=itemgetter(0))
+    if stagger:
+        yvals = [[0,0],[1,1]]*int(len(regions)/2) + ([[0,0]]*int(len(regions)%2))
+        linewidth= 5
+    else:
+        yvals = [[0,0]] * len(regions)
+        linewidth= 10
+    for n,m in enumerate(regions):
+        plt.plot(m,yvals[n],linewidth=linewidth,color="#092A59",solid_capstyle="butt")
+    return regions,labels
 
 
         
@@ -470,8 +438,7 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
     track_names = [element.split("/")[1] for element in track_names]
 
     printmd("Figure will be saved as: %s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat))
-    target = bedtrack
-    bedtrack = False
+    
     # DON'T MODIFY
     # Note: Need to clean up
     tracks_to_use = range(len(track_names))
@@ -504,13 +471,7 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
 
     cur_axes = plt.gca()
 
-    #Process Dataframe before it is sent to JavaScript Library
-        #for i in range(len(depths.columns.values)):
-        #depths[depths.columns.values[i]].sum()
-    
 
-    depths.to_csv("%s%s%s.%s"% ("thagomizer/static/CSV_Output/",geneid,outputsuffix,"csv"))
-    # print(depths.to_dict())
 
     ymax = max(depths.max())
     # Build RNAseq Tracks
@@ -536,11 +497,42 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
             plt.ylim([0,ymax])
 
     # Build Bedtracks
-    if target:
-        target_scan = graph_bed(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagger=staggerbed)
+    if bedtrack:
+        plt.subplot(gs[next(plotnumber)])
+        bedregions,bedlabels =graph_bed(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagger=staggerbed)
+        cur_axes = plt.gca()
+        cur_axes.axes.get_xaxis().set_visible(False)
+        cur_axes.axes.get_yaxis().set_ticks([])
+        if axis_off: 
+            cur_axes.axes.axis("off")
+        if invert:
+            cur_axes.invert_xaxis()
+        plt.ylabel(name,rotation=0,horizontalalignment="right",verticalalignment="center")
+        plt.xlim(limits)
+        if staggerbed:
+            plt.ylim([-1,2])
 
-
-
+    # Build Bigwig Tracks
+    if len(wigtracks_to_use)>0:
+        for n in wigtracks_to_use:
+            plt.subplot(gs[next(plotnumber)])
+            color = next(colors)
+            wigdepths = graph_wig(wig_df_list[bigwignames[n]],name,chrom,start,stop)
+            cur_axes = plt.gca()
+            cur_axes.axes.get_xaxis().set_visible(False)
+            cur_axes.axes.get_yaxis().set_ticks([])
+            if axis_off: 
+                cur_axes.axes.axis("off")
+            if invert:
+                cur_axes.invert_xaxis()
+            plt.fill_between(wigdepths.index, wigdepths["expression"].tolist(),color=color)
+            plt.ylabel(bigwignames[n],rotation=0,horizontalalignment="right",verticalalignment="center")
+            # To get relative ylim.. has weird values.
+            wig_ylim = [wig_df_list[bigwignames[n]]["expression"].min(),wig_df_list[bigwignames[n]]["expression"].max()]
+            # Try again with just -3:3
+            wig_ylim = [-3,3]
+            plt.ylim(wig_ylim)
+            plt.xlim(limits)
         
     # Build Refseq Track
     if refseqtrack:
@@ -553,7 +545,14 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
         cur_axes = plt.gca()
 
 
-
+    if shade_by_bed:    
+        for b in bedregions:
+            for n in tracks_to_use:
+                # Rectangle(<start(xy)>,<width>,<height>)
+                cur_axes_rna[n].add_patch(Rectangle((b[0]-10,0), 20, ymax,
+                                                    facecolor="#e2e2e2",
+                                                    edgecolor='none',
+                                                    alpha=0.7))
 
     #cur_axes.axes.get_yaxis().set_visible(False)
     cur_axes.axes.get_yaxis().set_ticks([])
@@ -588,46 +587,22 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
                         )
    
         #plt.gca().invert_xaxis()
-    #plt.rcParams['axes.facecolor'] = "lightcyan"
+    plt.rcParams['axes.facecolor'] = "#dbffe3"
     plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=0.2)
-
-    plt.savefig("%s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat),
-            format=outputformat,
+    plt.savefig("%s%s%s.%s"% (output_folder,geneid,outputsuffix,"pdf"),
+            format="pdf",
             bbox_inches='tight',
             dpi =dpi)
-
-    if target:
-        target_scan = graph_bed(genome_interest,bedfile,bedtype,name,chrom,start,stop,strand,stagger=staggerbed)
-        rows = 1
-        image = resize("%s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat), rows)
-        image = label_builder(target_scan, start, stop,image, rows)
-        image.save("%s%s%s.%s"% (output_folder,geneid,outputsuffix,outputformat))
-    ######################
+    plt.savefig("%s%s%s.%s"% (output_folder,geneid,outputsuffix,"png"),
+                format="png",
+                bbox_inches='tight',
+                dpi =dpi)
     
-        label_data = pd.DataFrame({'start':target_scan["start"], 'stop':target_scan["stop"], 'fill':[12 for i in target_scan["start"]], "fillOpacity":[0.8 for i in target_scan["start"]], 'Text':target_scan["name"], 'inside':["true" for i in target_scan["start"]], 'rotation':[90 for i in target_scan["start"]], 'horizontalCenter':["right" for i in target_scan["start"]], 'verticalCenter':["bottom" for i in target_scan["start"]]})
-        
-        ###################### This is the variable that contains the data: label_data. Convert it to a dict with .to_dict() if needed because it is currently a dataframe.
+    depths.to_csv(("%s%s%s.%s"% (output_folder.replace("Output", "CSV_Output"),geneid,outputsuffix,"csv")))
 
-    for i in range(len(track_names)):
-        if i == 0:
-            first = sum(depths[track_names[i]])
-        if i != 0:
-            coefficent_equalize = first/sum(depths[track_names[i]])
-            depths[track_names[i]] = (coefficent_equalize * depths[track_names[i]])
+   
 
-    depths = depths.to_dict()
-
-    if target:
-        depths['label_data'] = label_data.to_dict()
-    else:
-        depths['label_data'] = {}
-
-    
-    # print("depths['label_data']", depths['label_data'])
-
-    return depths
-    # print(fig)
-    # return fig
+    return depths.to_dict()
 
 
     
@@ -647,3 +622,4 @@ def loc_by_refseqid(refseqid):
     df_refseq_3utr = df_refseq_3utr.set_index("name")
     chrom,start,stop,value,strand = df_refseq_3utr.loc[refseqid]
     return chrom,start,stop,strand
+
