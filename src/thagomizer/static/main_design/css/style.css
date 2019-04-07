@@ -1631,6 +1631,37 @@ div#send-message-div {
 .top-write-part{
 
 }
+.export-pdf-list li {
+    float: right;
+    list-style: none;
+    margin-right: 20px;
+    background-color: #1b96e8;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.export-pdf-text{
+   padding-left: 10px;
+   padding-right: 15px;
+   color: white;
+}
+.export-pdf-icon {
+    padding: 12px 12px;
+    font-size: 14px;
+    background-color: #0e70b1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+}
+.dashboard-link{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+
+
+
+
 
 
 
