@@ -1,97 +1,100 @@
-$('body').hide()
-console.log('hide')
-            $.ajax({
-              url:'/static/graphy_static/auto_fill/hg19/TSHuman_7_hg19_3UTRs.json',
-              async: false,
-              success:function(data2){
-                  console.log('read')
-                  // $.each(data2, function(index2, val2) {
-                    // console.log(index2, val2)
-                  //     if (val2['transcript id'] == transcript_id) {
+// $('body').hide()
+// console.log('hide')
+//             $.ajax({
+//               url:'/static/graphy_static/auto_fill/hg19/TSHuman_7_hg19_3UTRs.json',
+//               async: false,
+//               success:function(data2){
+//                   console.log('read')
+//                   // $.each(data2, function(index2, val2) {
+//                     // console.log(index2, val2)
+//                   //     if (val2['transcript id'] == transcript_id) {
                           
-                  //         var chrom_value = data2[index2]['chrom']+':'+data2[index2]['start'].toLocaleString()+'-'+data2[index2]['stop'].toLocaleString()
-                  //         last_strand_value  = data2[index2]['strand']
-                  //         $('.location').val(chrom_value)
-                  //         query_found = true
-                  //         return false
-                  //     }
+//                   //         var chrom_value = data2[index2]['chrom']+':'+data2[index2]['start'].toLocaleString()+'-'+data2[index2]['stop'].toLocaleString()
+//                   //         last_strand_value  = data2[index2]['strand']
+//                   //         $('.location').val(chrom_value)
+//                   //         query_found = true
+//                   //         return false
+//                   //     }
 
-                  // });
-                  // if (!query_found){
-                  //   $('.auto_complete').html(no_matching_query_error_msg)
-                  // }else{
-                  //   $('.auto_complete').html(matching_query_success_msg)
-                  // }
-              },
-              error:function(data2){
-                console.log('error')
-              }
+//                   // });
+//                   // if (!query_found){
+//                   //   $('.auto_complete').html(no_matching_query_error_msg)
+//                   // }else{
+//                   //   $('.auto_complete').html(matching_query_success_msg)
+$('.search-box').data("isValid", "1")
+//                   // }
+//               },
+//               error:function(data2){
+//                 console.log('error')
+//               }
 
-            })
+//             })
 
         
 
 
-        $.ajax({
-              url:'/static/graphy_static/auto_fill/hg19/TSHuman_7_hg19_3UTRs.json',
-              async: false,
-              success:function(data2){
-                  console.log('read2')
-                  // $.each(data2, function(index2, val2) {
-                    // console.log(index2, val2)
-                  //     if (val2['transcript id'] == transcript_id) {
+//         $.ajax({
+//               url:'/static/graphy_static/auto_fill/hg19/TSHuman_7_hg19_3UTRs.json',
+//               async: false,
+//               success:function(data2){
+//                   console.log('read2')
+//                   // $.each(data2, function(index2, val2) {
+//                     // console.log(index2, val2)
+//                   //     if (val2['transcript id'] == transcript_id) {
                           
-                  //         var chrom_value = data2[index2]['chrom']+':'+data2[index2]['start'].toLocaleString()+'-'+data2[index2]['stop'].toLocaleString()
-                  //         last_strand_value  = data2[index2]['strand']
-                  //         $('.location').val(chrom_value)
-                  //         query_found = true
-                  //         return false
-                  //     }
+//                   //         var chrom_value = data2[index2]['chrom']+':'+data2[index2]['start'].toLocaleString()+'-'+data2[index2]['stop'].toLocaleString()
+//                   //         last_strand_value  = data2[index2]['strand']
+//                   //         $('.location').val(chrom_value)
+//                   //         query_found = true
+//                   //         return false
+//                   //     }
 
-                  // });
-                  // if (!query_found){
-                  //   $('.auto_complete').html(no_matching_query_error_msg)
-                  // }else{
-                  //   $('.auto_complete').html(matching_query_success_msg)
-                  // }
-              },
-              error:function(data2){
-                console.log('error')
-              }
+//                   // });
+//                   // if (!query_found){
+//                   //   $('.auto_complete').html(no_matching_query_error_msg)
+//                   // }else{
+//                   //   $('.auto_complete').html(matching_query_success_msg)
+$('.search-box').data("isValid", "1")
+//                   // }
+//               },
+//               error:function(data2){
+//                 console.log('error')
+//               }
 
-            })
+//             })
 
 
-        $.ajax({
-            url:'/static/graphy_static/auto_fill/hg19/refGene.json',
-            async: false,
-            success:function(data){
-                console.log('read2')
-                $('body').show()
-                console.log('show')
-                // $.each(data, function(index, val) {
-                  // console.log(index, val)
-                //     if (typed_value_chrom == val.chrom && typed_value_start >= val.txStart && typed_value_stop <= val.txEnd) {
-                //         $('.refseqID').val(data[index]['#name'])
-                //         $('.geneid_search').val(data[index]['gene id'])
-                //         last_strand_value  = data[index]['strand']
-                //         query_found = true
-                //         return false
-                //     }
-                // });
-                // if (!query_found){
-                //   $('.auto_complete').html(no_matching_query_error_msg)
-                // }else{
-                //   $('.auto_complete').html(matching_query_success_msg)
-                // }
-            },
-            error:function(data){
-              console.log('error')
-              $('.auto_complete').html('')
-              // alert('long file error here1')
-            }
+//         $.ajax({
+//             url:'/static/graphy_static/auto_fill/hg19/refGene.json',
+//             async: false,
+//             success:function(data){
+//                 console.log('read2')
+//                 $('body').show()
+//                 console.log('show')
+//                 // $.each(data, function(index, val) {
+//                   // console.log(index, val)
+//                 //     if (typed_value_chrom == val.chrom && typed_value_start >= val.txStart && typed_value_stop <= val.txEnd) {
+//                 //         $('.refseqID').val(data[index]['#name'])
+//                 //         $('.geneid_search').val(data[index]['gene id'])
+//                 //         last_strand_value  = data[index]['strand']
+//                 //         query_found = true
+//                 //         return false
+//                 //     }
+//                 // });
+//                 // if (!query_found){
+//                 //   $('.auto_complete').html(no_matching_query_error_msg)
+//                 // }else{
+//                 //   $('.auto_complete').html(matching_query_success_msg)
+$('.search-box').data("isValid", "1")
+//                 // }
+//             },
+//             error:function(data){
+//               console.log('error')
+//               $('.auto_complete').html('')
+//               // alert('long file error here1')
+//             }
 
-          })
+//           })
 
 $(document).ready(function(){
 
@@ -397,11 +400,11 @@ var matching_query_success_msg = '<p style="color:green" class="matching_query_s
                                   '<i class="fa fa-check fa-3x"></i> '+
                                   '</p>'
                                   
-var matching_query_loading_msg = ''
+// var matching_query_loading_msg = ''
 
-// var matching_query_loading_msg = '<p style="color:white" class="matching_query_success_msg">'+
-//                                   '<img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Loading-gif-builder-comwrap.gif" style="width: 15px;"> Loading!!'+
-//                                   '</p>'
+var matching_query_loading_msg = '<p style="color:white" class="matching_query_success_msg">'+
+                                  '<img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Loading-gif-builder-comwrap.gif" style="width: 31px;"> '+
+                                  '</p>'
 
 
 $('.geneid_search').on('keyup', function(){
@@ -435,8 +438,10 @@ $('.geneid_search').on('keyup', function(){
                                 });
                                 if (!query_found){
                                   $('.auto_complete').html(no_matching_query_error_msg)
+                                  $('.search-box').data("isValid", "0")
                                 }else{
                                   $('.auto_complete').html(matching_query_success_msg)
+                                  $('.search-box').data("isValid", "1")
                                 }
                             },
                             error:function(data2){
@@ -450,8 +455,10 @@ $('.geneid_search').on('keyup', function(){
                   });
                   if (!query_found){
                     $('.auto_complete').html(no_matching_query_error_msg)
+                    $('.search-box').data("isValid", "0")
                   }else{
                     $('.auto_complete').html(matching_query_success_msg)
+                    $('.search-box').data("isValid", "1")
                   }
               },
               error:function(data){
@@ -476,8 +483,10 @@ $('.geneid_search').on('keyup', function(){
                 });
                 if (!query_found){
                   $('.auto_complete').html(no_matching_query_error_msg)
+                  $('.search-box').data("isValid", "0")
                 }else{
                   $('.auto_complete').html(matching_query_success_msg)
+                  $('.search-box').data("isValid", "1")
                 }
             },
             error:function(data){
@@ -508,8 +517,10 @@ $('.geneid_search').on('keyup', function(){
                   });
                   if (!query_found){
                     $('.auto_complete').html(no_matching_query_error_msg)
+                    $('.search-box').data("isValid", "0")
                   }else{
                     $('.auto_complete').html(matching_query_success_msg)
+                    $('.search-box').data("isValid", "1")
                   }
               },
               error:function(data){
@@ -536,8 +547,10 @@ $('.geneid_search').on('keyup', function(){
                   });
                   if (!query_found){
                     $('.auto_complete').html(no_matching_query_error_msg)
+                    $('.search-box').data("isValid", "0")
                   }else{
                     $('.auto_complete').html(matching_query_success_msg)
+                    $('.search-box').data("isValid", "1")
                   }
               },
               error:function(data){
@@ -576,6 +589,7 @@ $('.location').on('keyup', function(){
     }
     catch{
       $('.no_matching_query_error_msg').html(no_matching_query_error_msg)
+      $('.search-box').data("isValid", "0")
     }
 
     if ($('#genome-check-box2').is(':checked')){
@@ -596,8 +610,10 @@ $('.location').on('keyup', function(){
                 });
                 if (!query_found){
                   $('.auto_complete').html(no_matching_query_error_msg)
+                  $('.search-box').data("isValid", "0")
                 }else{
                   $('.auto_complete').html(matching_query_success_msg)
+                  $('.search-box').data("isValid", "1")
                 }
             },
             error:function(data){
@@ -625,8 +641,10 @@ $('.location').on('keyup', function(){
                 });
                 if (!query_found){
                   $('.auto_complete').html(no_matching_query_error_msg)
+                  $('.search-box').data("isValid", "0")
                 }else{
                   $('.auto_complete').html(matching_query_success_msg)
+                  $('.search-box').data("isValid", "1")
                 }
             },
             error:function(data){
@@ -670,9 +688,11 @@ $('.refseqID').on('keyup', function(){
 
                 if (!query_found){
                     $('.auto_complete').html(no_matching_query_error_msg)
+                    $('.search-box').data("isValid", "0")
 
                 }else{
                     $('.auto_complete').html(matching_query_success_msg)
+                    $('.search-box').data("isValid", "1")
                 }
              
           },
@@ -702,9 +722,11 @@ $('.refseqID').on('keyup', function(){
 
                 if (!query_found){
                     $('.auto_complete').html(no_matching_query_error_msg)
+                    $('.search-box').data("isValid", "0")
 
                 }else{
                     $('.auto_complete').html(matching_query_success_msg)
+                    $('.search-box').data("isValid", "1")
                     // no need now done on top now 
                     //since from above result we need to take genid
                     // geneId_typed_value = $('.geneid_search').val()  //change because next search by genid
@@ -725,6 +747,7 @@ $('.refseqID').on('keyup', function(){
                     //         $('.auto_complete').html(no_matching_query_error_msg)
                     //       }else{
                     //         $('.auto_complete').html(matching_query_success_msg)
+                    $('.search-box').data("isValid", "1")
                     //       }
                     //   },
                     //   error:function(data){

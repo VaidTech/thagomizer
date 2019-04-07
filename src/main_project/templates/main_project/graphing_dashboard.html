@@ -169,13 +169,13 @@
                 <div class="col-sm-12" id="big-boxes">
                   <ul class="export-pdf-list">
                       <li>
-                        <a href="#" class="dashboard-link">
+                        <a href="#" target="_blank" class="dashboard-link exportPdfLink" style="display: none">
                           <span><i class="fas fa-download export-pdf-icon"></i></span>
                           <span class="export-pdf-text">Export PDF</span>
                         </a>  
                       </li>
                       <li>
-                        <a href="#" class="dashboard-link">
+                        <a href="#" target="_blank" class="dashboard-link exportDataLink" style="display: none">
                           <span><i class="fas fa-download export-pdf-icon"></i></span>
                           <span class="export-pdf-text">Export Data</span>
                         </a>  
@@ -274,7 +274,7 @@
                         </div><!-- col-sm-12 -->
                    </div>
                 </div><!-- col-sm-12 -->
-                <div class="col-sm-12" id="search-button-box">
+                <div class="col-sm-12 search-box" id="search-button-box" data-is-valid=1 >
                   <p id="search-main-button">Plot</p>
                 </div><!-- col-sm-12 -->
               </div><!-- col-sm-3 --> 
@@ -318,8 +318,24 @@
     <script type="text/javascript">
   
     
+    //////////////////////////////popup close   ////////// 
+    $(".close-the-popup").click(function(){
+       $('body').css('overflow','auto')
+       $("#dashboard-popup").css('display','none')
+    })
+
+    var popupImg = function(imgsrc){
+       
+      $(".dashboard-popup-img").attr('src', imgsrc)
+      $("#dashboard-popup").css('display','')
+
+    }
+
+    popupImg('/static/main_design/img/popup2.webp')
+
 
     $(document).ready(function(){
+
 
       $('.graphing_dashboard_menu').addClass('active-page')
       //to add the extra li(can't write on base.html because this li is only for this file)
@@ -332,9 +348,21 @@
       $('.graph_result_img').hide()
       $('.graph_result_gif').hide()
        $('#search-button-box').on('click', function(){
+
+
+          console.log("$(this).data('is-valid')", $('.search-box').data('is-valid'))
+          
+          if ($('.search-box').data('is-valid') == "0"){
+            popupImg('/static/main_design/img/Error_Invalid_Input.webp')
+            return true
+          }
+
+
           // console.log(value_object)
           get_graph()   //to remove current graph if have any
           $('.graph_result_img').hide()
+          $('.exportPdfLink').hide()
+          $('.exportDataLink').hide()
           $('.graph_result_gif').attr("src", 'https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif')
           $('.graph_result_gif').show()
           $.ajax({
@@ -348,9 +376,9 @@
               graph_data = data.graph_data
               label_data = data.label_data
               first_dict_val = data.first_dict_val
-              data = '/'+data.image_url
+              data_image_url = '/'+data.image_url
               
-              if (data == "error"){
+              if (data_image_url == "error"){
                 $('.graph_result_img').attr("src", 'https://i.ytimg.com/vi/pAZ7z7OJOsc/hqdefault.jpg')
                 $('.graph_result_img').show()
                 $('.graph_result_gif').hide()
@@ -359,14 +387,21 @@
                 get_graph(graph_data, bam_files, label_data, first_dict_val)
 
 
-  	             $('.graph_result_img').attr("src", '')  //cause sometime img's new src sit on it place later but show before, so for 1/2 sec it shows the previous image so we are hiding previous img. (Only if server is slow)
+  	             $('.graph_result_img').attr("src", '')  //cause sometime img's new src sit on it place later but show before, so for 1/2 sec it shows the previous image so we are hiding previous img. (Only if server is slow)                                          
                   $('.graph_result_img').attr("src", 'https://i.ytimg.com/vi/pAZ7z7OJOsc/hqdefault.jpg')
-                  $.when( $('.graph_result_img').attr("src", data) ).done(function(){
+                  $.when( $('.graph_result_img').attr("src", data_image_url) ).done(function(){
 
-                      $.when( $('.example-image-link').attr("href", data) ).done(function(){
+                      $.when( $('.example-image-link').attr("href", data_image_url) ).done(function(){
                           $('.graph_result_img').show()
                           $('.example-image-link').show()
                           $('.graph_result_gif').hide()
+
+                          $('.exportPdfLink').show()
+                          $('.exportPdfLink').attr("href", data.pdf_url)
+                          // console.log('data.pdf_url', data.pdf_url)
+                          $('.exportDataLink').show()
+                          $('.exportDataLink').attr("href", data.csv_url)
+                          // console.log('data.csv_url', data.csv_url)
                       })
                   })  
                 

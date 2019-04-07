@@ -255,11 +255,15 @@ def graphy(request):
 			
 
 		# print(real_value)
+		csv_url = '/static/CSV_Output/'+geneid+outputsuffix+'.csv'
+		pdf_url = '/static/Output/'+geneid+outputsuffix+'.pdf'
 		outputsuffix = 'static/Output/'+geneid+outputsuffix+'.png'
 
 		return {
 			'bam_files': bam_files,
 			'image_url': outputsuffix,
+			'pdf_url': pdf_url,
+			'csv_url': csv_url,
 			'graph_data': real_value,
 			'label_data': plot_value.get('label_data', {}),
 			'first_dict_val': first_dict_val 	#for converting date to number in labeling need to use in js
