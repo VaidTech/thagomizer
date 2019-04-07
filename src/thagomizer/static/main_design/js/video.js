@@ -345,5 +345,25 @@ $("video").click(function() {
 //     console.log(sendfinallink)
 // })
 
+
+//////////////////////////////popup close 
+$(".close-the-popup").click(function(){
+   $('body').css('overflow','auto')
+   $("#dashboard-popup").css('display','none')
+})
+
+var popupImg = function(imgsrc){
+   
+  $(".dashboard-popup-img").attr('src', imgsrc)
+
+}
+
+popupImg('/static/main_design/img/popup2.webp')
+
+
+
+
+
+
 })
 

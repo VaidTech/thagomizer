@@ -3,6 +3,9 @@
 
 {% block header_extra_html_css %}
   <style type="text/css">
+    body{
+      overflow: hidden;
+    }
     @media screen and (max-width: 600px) {
       .col-sm-12 {
         padding: 0px;
@@ -14,6 +17,11 @@
 {% block content %}
     
     </style>
+
+    <section id="dashboard-popup">
+      <p class="close-the-popup">X</p>
+      <img src="" class="dashboard-popup-img">  
+    </section>
 
     <section id="top-sub-section">
     </section><!--       Wallpaper Section   -->

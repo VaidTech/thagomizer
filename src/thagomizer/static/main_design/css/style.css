@@ -1657,9 +1657,29 @@ div#send-message-div {
     padding-bottom: 10px;
     cursor: pointer;
 }
-
-
-
+#dashboard-popup{
+    width: 100%;
+    position: fixed;
+    z-index: 1000000000000;
+    background-color: #484848a6;
+    height: 100%;
+}
+.dashboard-popup-img {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 4%;
+}
+.close-the-popup {
+    position: absolute;
+    margin-left: 14.5%;
+    margin-top: 3%;
+    font-size: 20px;
+    border: 2px solid white;
+    padding: 5px 12px;
+    border-radius: 50%;
+    font-weight: 800;
+    cursor: pointer;
+}
 
 
 
