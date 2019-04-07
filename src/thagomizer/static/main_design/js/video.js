@@ -355,8 +355,6 @@ $(".close-the-popup").click(function(){
 var popupImg = function(imgsrc){
    
   $(".dashboard-popup-img").attr('src', imgsrc)
-  $('body').css('overflow','hidden')
-   $("#dashboard-popup").css('display','block')
 
 }
 
@@ -371,8 +369,6 @@ $(".close-the-popup2").click(function(){
 var popupImg2 = function(imgsrc){
    
   $(".dashboard-popup-img2").attr('src', imgsrc)
-  $('body').css('overflow','hidden')
-   $("#dashboard-popup2").css('display','block')
 
 }
 
