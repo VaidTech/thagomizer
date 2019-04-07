@@ -361,6 +361,28 @@ var popupImg = function(imgsrc){
 popupImg('/static/main_design/img/popup2.webp')
 
 
+$(".close-the-popup2").click(function(){
+   $('body').css('overflow','auto')
+   $("#dashboard-popup2").css('display','none')
+})
+
+var popupImg2 = function(imgsrc){
+   
+  $(".dashboard-popup-img2").attr('src', imgsrc)
+
+}
+
+
+
+
+if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+  popupImg2('/static/main_design/img/popup1.webp')
+}else{
+   $("#dashboard-popup2").css('display','none')
+}
+
+
+
 
 
 
