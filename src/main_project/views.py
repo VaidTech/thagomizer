@@ -292,7 +292,7 @@ def graphy(request):
 		if bedtype=='':
 			bedtype = None
 
-		print('name is', request.GET['name'])
+		# print('name is', request.GET['name'])
 		name = request.GET['name']								#working
 		if name=='':
 			name = None

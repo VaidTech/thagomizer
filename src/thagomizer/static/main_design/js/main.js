@@ -847,6 +847,8 @@ $('#genome-check-box1').trigger('click')  //always mm10 selected
 
             name = $('#sequence-analysis-option-bar').val()
 
+        }else{
+          name = false
         }
 
         // console.log('')
@@ -962,8 +964,8 @@ $('#genome-check-box1').trigger('click')  //always mm10 selected
           bedfile : bedfile,
           bedtrack : bedtrack,
           bedtype : bedtype,
-          // name : name,
-          name : $('#sequence-analysis-check-box2').is(':checked'),
+          name : name,
+          // name : $('#sequence-analysis-check-box2').is(':checked'),
           shade_by_bed : shade_by_bed,
           track_names  :  selectionArray,
           track_type  : checkBoxArray,
