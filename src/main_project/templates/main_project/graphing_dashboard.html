@@ -187,7 +187,7 @@
                        <p class="full_img_text" alt="image-1">Click For Full Image</p>
                   </div>
                   <!-- <img class="graph_result_img" src="{% static 'main_design/img/error.png' %}"/>   -->
-                  <img class="graph_result_gif" src="https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif"/> 
+                  <img class="graph_result_gif" src="/static/main_design/img/Spinner-1s-200px.gif"/> 
                    
                 </div><!-- col-sm-12 --> 
                 <div class="col-sm-12" id="big-boxes" style="display: none">
@@ -286,7 +286,7 @@
                   <div id="show_img">
                      <p class="full_img_text" alt="image-1">Click For Full Image</p>
                   </div>
-                  <img style="width:72px" class="graph_result_gif" src="https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif"/> 
+                  <img style="width:72px" class="graph_result_gif" src="/static/main_design/img/Spinner-1s-200px.gif"/> 
                    
 
                   <!-- <a class="example-image-link" href="{% static 'main_design/img/wall-back.png' %}" data-lightbox="example-1"/>                 
@@ -296,7 +296,7 @@
                        <p class="full_img_text" alt="image-1">Click For Full Image</p>
                   </div> -->
                   <!-- <img class="graph_result_img" src="{% static 'main_design/img/error.png' %}"/>   -->
-                  <!-- <img class="graph_result_gif" src="https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif"/> -->
+                  <!-- <img class="graph_result_gif" src="/static/main_design/img/Spinner-1s-200px.gif"/> -->
               </div><!-- col-sm-12 --> 
            </div>
         </div>
@@ -350,7 +350,7 @@
        $('#search-button-box').on('click', function(){
 
 
-          console.log("$(this).data('is-valid')", $('.search-box').data('is-valid'))
+          // console.log("$(this).data('is-valid')", $('.search-box').data('is-valid'))
           
           if ($('.search-box').data('is-valid') == "0"){
             popupImg('/static/main_design/img/popup/3.png')
@@ -363,7 +363,7 @@
           $('.graph_result_img').hide()
           $('.exportPdfLink').hide()
           $('.exportDataLink').hide()
-          $('.graph_result_gif').attr("src", 'https://www.internetworktraining.com/router-emulator/images/ajax-loading.gif')
+          $('.graph_result_gif').attr("src", '/static/main_design/img/Spinner-1s-200px.gif')
           $('.graph_result_gif').show()
           $.ajax({
             method:'GET',

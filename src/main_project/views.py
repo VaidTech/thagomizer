@@ -175,8 +175,6 @@ def graphy(request):
 
 # 	    ############# Constant Values #############
 
-		# print('name is', name)
-
 		plot_value = plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
 		   					colors,shade,limits,bedtrack,start,stop,staggerbed,bigwignames,
 		    				wig_df_list,shade_by_bed,output_folder,geneid,outputsuffix,outputformat,dpi,track_names,axis_off,
@@ -294,6 +292,7 @@ def graphy(request):
 		if bedtype=='':
 			bedtype = None
 
+		print('name is', request.GET['name'])
 		name = request.GET['name']								#working
 		if name=='':
 			name = None

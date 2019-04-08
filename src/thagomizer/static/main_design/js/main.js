@@ -843,7 +843,6 @@ $('#genome-check-box1').trigger('click')  //always mm10 selected
         counter1 = $("#axis-input-one").val()  //need to change here because on top it's value depeiding on the click of plus/minus only not if write numer on the field manually 
         counter2 = $("#axis-input-two").val()  //need to change here because on top it's value depeiding on the click of plus/minus only not if write numer on the field manually 
 
-
         if ($('#sequence-analysis-check-box2').is(':checked')) {   // cause avobe the logic is wrong, which says only if click take from here, so whatif first click and then select, so when the click happen no item was selected or the first one default is selected only. So this is for the solution
 
             name = $('#sequence-analysis-option-bar').val()
@@ -963,7 +962,8 @@ $('#genome-check-box1').trigger('click')  //always mm10 selected
           bedfile : bedfile,
           bedtrack : bedtrack,
           bedtype : bedtype,
-          name : name,
+          // name : name,
+          name : $('#sequence-analysis-check-box2').is(':checked'),
           shade_by_bed : shade_by_bed,
           track_names  :  selectionArray,
           track_type  : checkBoxArray,
@@ -979,8 +979,8 @@ $('#genome-check-box1').trigger('click')  //always mm10 selected
 
     })
 
-console.log("Cookies.get('json_read')", Cookies.get('json_read'))
-console.log('tre or false', Cookies.get('json_read') != "true")
+// console.log("Cookies.get('json_read')", Cookies.get('json_read'))
+// console.log('tre or false', Cookies.get('json_read') != "true")
 
  if ( Cookies.get('json_read') != "true") {
     $('body').hide()
