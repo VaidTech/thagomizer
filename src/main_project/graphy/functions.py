@@ -587,7 +587,7 @@ def plot(figwidth,figheight,refseqtrack,LeftToRight,strand,depths,
                         )
    
         #plt.gca().invert_xaxis()
-    plt.rcParams['axes.facecolor'] = "#dbffe3"
+    plt.rcParams['axes.facecolor'] = "#f9f9f9"
     plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=0.2)
     plt.savefig("%s%s%s.%s"% (output_folder,geneid,outputsuffix,"pdf"),
             format="pdf",

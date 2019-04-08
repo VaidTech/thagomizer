@@ -358,7 +358,7 @@ var popupImg = function(imgsrc){
 
 }
 
-popupImg('/static/main_design/img/popup2.webp')
+popupImg('/static/main_design/img/popup/2.png')
 
 
 $(".close-the-popup2").click(function(){
@@ -373,10 +373,12 @@ var popupImg2 = function(imgsrc){
 }
 
 
-
-
 if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-  popupImg2('/static/main_design/img/popup1.webp')
+  popupImg2('/static/main_design/img/popup/1.png')
+}else if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+  popupImg2('/static/main_design/img/popup/1.png')
+}else if(navigator.userAgent.toLowerCase().indexOf('safari') == -1) {
+  popupImg2('/static/main_design/img/popup/1.png')
 }else{
    $("#dashboard-popup2").css('display','none')
 }
